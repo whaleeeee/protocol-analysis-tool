@@ -1,0 +1,53 @@
+/*
+*Proposed Pairing-free CL-AKA for Grid (GPC-AKA)
+*/
+// Hash functions
+hashfunction KDF, H;
+// Addition, multiplication, simply hashes 
+hashfunction mult, add;
+// The protocol description
+protocol GPC-AKA(KGC, UP, RP)
+//UP=Initiator, RP=Responder
+{
+const rA, rB, P;
+
+	role KGC    //Key Generation Center
+	{
+	send_1(KGC, UP, P); //Publish public params
+	send_2(KGC, RP, P);
+	}
+	
+	role UP   //User Proxy
+	{
+	fresh tA: Nonce; //Ephemeral Secret
+	var TB: Ticket;
+	var RB;
+
+	recv_1(KGC, UP, P);
+	send_3(UP, RP, mult(rA, P));  //Send RA
+	recv_4(RP, UP, RB);
+	send_5(UP, RP, mult(tA, P));  //Send TA
+	recv_6(RP, UP, TB);
+
+	//Secret Session Key
+	claim(UP, SKR, KDF(UP, RP, mult(tA, P), TB, mult(add(tA,sk(UP, KGC),sk(UP)), add(TB, pk(RP),RB, mult(H(RP, RB, pk(RP)),pk(KGC))))));
+	
+	}
+	
+	role RP  //Resource Proxy
+	{
+	fresh tB: Nonce; // Ephemeral Secret
+	var TA: Ticket;
+	var RA;
+	
+	recv_2(KGC, RP, P);
+	recv_3(UP, RP, RA);  
+	send_4(RP, UP, mult(rB,P));   //send RB 
+	recv_5(UP, RP, TA);  
+	send_6(RP, UP, mult(tB, P));         //Send TB
+
+	//Secret Session Key
+	claim(RP, SKR, KDF(UP, RP, TA, mult(tB,P), mult(add(tB, sk(RP, KGC),sk(RP)), add(TA, pk(UP), RA, mult(H(UP, RA, pk(UP)), pk(KGC))))));
+
+	}
+}

@@ -1,0 +1,178 @@
+(entry tval(qidlist grammar Homo-hpc)(notes)(tval MAUDE-NPA(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq n(#1:Name,#2:Fresh)), #0:Msg notLeq pke(hpke(
+    data(#3:Name,#4:Fresh),pkey(#3:Name,#5:Name)),s)=>(#0:Msg ; #6:Msg)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:Name ; #2:Nonce ; #3:Nonce ; f(#4:HEnc,
+    #5:HEnc)), (#0:Msg notLeq #6:Name ; n(#7:Name,#8:Fresh); #9:Nonce ; pke(
+    hpke(data(#7:Name,#10:Fresh),pkey(#7:Name,#6:Name)),s); #11:Enc), (#0:Msg
+    notLeq #12:Nonce ; #13:Nonce ; f(#14:HEnc,#15:HEnc)), (#0:Msg notLeq
+    #16:Nonce ; pke(hpke(data(#17:Name,#18:Fresh),pkey(#17:Name,#19:Name)),s);
+    #20:Enc), (#0:Msg notLeq #21:Nonce ; f(#22:HEnc,#23:HEnc)), (#0:Msg notLeq
+    n(#24:Name,#25:Fresh); pke(hpke(data(#24:Name,#26:Fresh),pkey(#24:Name,
+    #27:Name)),s)), (#0:Msg notLeq n(#28:Name,#29:Fresh); #30:Nonce ; pke(hpke(
+    data(#28:Name,#31:Fresh),pkey(#28:Name,#32:Name)),s); #33:Enc), (#0:Msg
+    notLeq n(#34:Name,#35:Fresh); pke(hpke(data(#34:Name,#36:Fresh),pkey(
+    #37:Name,#34:Name)),s)), (#0:Msg notLeq pke(hpke(data(#38:Name,#39:Fresh),
+    pkey(#38:Name,#40:Name)),s); #41:Enc), (#0:Msg notLeq f(#42:HEnc,
+    #43:HEnc)), (#0:Msg notLeq pke(hpke(data(#44:Name,#45:Fresh),pkey(#46:Name,
+    #44:Name)),s)), #0:Msg notLeq pke(hpke(data(#47:Name,#48:Fresh),pkey(
+    #47:Name,#49:Name)),s)=>(#50:Msg ; #0:Msg)inL .)
+|(errorNoHeuristicApplied{
+grl empty =>(#1:Msg ; #2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .}usingGrammar
+grl empty =>(#1:Msg ; #2:Msg)inL .)
+|(
+grl empty => data(#0:Name,#1:Fresh)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq hpke(data(#1:Name,#2:Fresh),pkey(#1:Name,
+    #3:Name))), #0:Msg notLeq hpke(data(#4:Name,#5:Fresh),pkey(#6:Name,
+    #4:Name))=> f(#0:Msg,#7:Msg)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq hpke(data(#1:Name,#2:Fresh),pkey(#1:Name,
+    #3:Name))), #0:Msg notLeq hpke(data(#4:Name,#5:Fresh),pkey(#6:Name,
+    #4:Name))=> pke(#0:Msg,s)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq hpke(data(#1:Name,#2:Fresh),pkey(#1:Name,
+    #3:Name))), #0:Msg notLeq hpke(data(#4:Name,#5:Fresh),pkey(#6:Name,
+    #4:Name))=> f(#7:Msg,#0:Msg)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq hpke(data(#1:Name,#2:Fresh),pkey(#1:Name,
+    #3:Name))), #0:Msg notLeq hpke(data(#4:Name,#5:Fresh),pkey(#6:Name,
+    #4:Name))=> pke(#0:Msg,s)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl f(#0:Msg,#1:Msg)notLeq f(#2:HEnc,#3:HEnc)=> f(#0:Msg,#1:Msg)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI => hpke(#0:Msg,#1:Pkey)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Pkey notInI, #0:Pkey notLeq pkey(#1:Name,#2:Name)=> hpke(#3:Msg,
+    #0:Pkey)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl hpke(#0:Msg,#1:Pkey)notLeq hpke(#2:Msg,pkey(#3:Name,#4:Name))=> hpke(
+    #0:Msg,#1:Pkey)inL .)
+|(errorInconsistentExceptionsInGrammarRule
+grl n(#0:Name,#1:Fresh)notLeq #4:Nonce => n(#0:Name,#1:Fresh)inL . inGrammar
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl n(#0:Name,#1:Fresh)notLeq #4:Nonce => n(#0:Name,#1:Fresh)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq hpke(data(#1:Name,#2:Fresh),pkey(#1:Name,
+    #3:Name))), #0:Msg notLeq hpke(data(#4:Name,#5:Fresh),pkey(#6:Name,
+    #4:Name))=> pke(#0:Msg,#7:Name)inL .)
+|(errorNoHeuristicApplied{
+grl empty => pke(#1:Msg,#2:Name)inL .,none,
+grl empty =>(#1:Msg,#2:Name)inL .,none,
+grl empty =>(#1:Msg,#2:Name)inL .}usingGrammar
+grl empty => pke(#1:Msg,#2:Name)inL .)
+|(errorInconsistentExceptionsInGrammarRule
+grl pkey(#0:Name,#1:Name)notLeq pkey(#5:Name,#6:Name)=> pkey(#0:Name,
+    #1:Name)inL . inGrammar
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #4:Msg inL => hpke(#4:Msg,#3:Pkey)inL . ;
+grl #0:Pkey inL => hpke(#1:Msg ; #2:Msg,#0:Pkey)inL . ;
+grl #0:Pkey inL => hpke(pkey(#1:Name,#2:Name),#0:Pkey)inL . ;
+grl #0:Pkey inL => hpke(pke(#1:Msg,i),#0:Pkey)inL . ;
+grl #0:Pkey inL => hpke(hpke(pkey(#1:Name,#2:Name),#3:Pkey),#0:Pkey)inL . ;
+grl #0:Pkey inL => hpke(sign(#1:Msg,#2:Name),#0:Pkey)inL . ;
+grl #5:Pkey inL => hpke(hpke(#1:Msg ; #2:Msg,#0:Pkey),#5:Pkey)inL . ;
+grl #5:Pkey inL => hpke(hpke(sign(#1:Msg,#2:Name),#0:Pkey),#5:Pkey)inL . ;
+grl #6:Pkey inL => hpke(hpke(hpke(pkey(#1:Name,#2:Name),#3:Pkey),#0:Pkey),
+    #6:Pkey)inL . ;
+grl #4:Pkey inL => hpke(hpke(pke(#1:Msg,i),#0:Pkey),#4:Pkey)inL . ;
+grl pkey(#0:Name,#1:Name)notLeq pkey(#5:Name,#6:Name)=> pkey(#0:Name,
+    #1:Name)inL .)
+|(
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:Name ; #2:Name ; #3:Nonce ; #4:Nonce ; f(
+    #5:HEnc,#6:HEnc)), (#0:Msg notLeq #7:Name ; n(#8:Name,#9:Fresh); pke(hpke(
+    data(#8:Name,#10:Fresh),pkey(#8:Name,#7:Name)),s)), (#0:Msg notLeq #11:Name
+    ; #12:Name ; n(#11:Name,#13:Fresh); #14:Nonce ; pke(hpke(data(#11:Name,
+    #15:Fresh),pkey(#11:Name,#12:Name)),s); #16:Enc), #0:Msg notLeq #17:Nonce ;
+    n(#18:Name,#19:Fresh); pke(hpke(data(#18:Name,#20:Fresh),pkey(#21:Name,
+    #18:Name)),s)=> sign(#0:Msg,#22:Name)inL .)
+|
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL => pke(#0:Msg,i)inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(i,#1:Name))inL . ;
+grl #0:Msg inL => hpke(#0:Msg,pkey(#1:Name,i))inL . ;
+grl #0:Msg inL => sign(#0:Msg,#1:Name)inL . ;
+grl(sign(#0:Msg,#1:Name)notLeq sign(#2:Msg,i)), (sign(#0:Msg,#1:Name)notLeq
+    sign(#3:Name ; #4:Name ; #5:Nonce ; #6:Nonce ; f(#7:HEnc,#8:HEnc),s)), (
+    sign(#0:Msg,#1:Name)notLeq sign(#9:Name ; #10:Name ; n(#9:Name,#11:Fresh);
+    #12:Nonce ; pke(hpke(data(#9:Name,#13:Fresh),pkey(#9:Name,#10:Name)),s);
+    #14:Enc,#9:Name)), (sign(#0:Msg,#1:Name)notLeq sign(#15:Name ; n(#16:Name,
+    #17:Fresh); pke(hpke(data(#16:Name,#18:Fresh),pkey(#16:Name,#15:Name)),s),
+    #16:Name)), sign(#0:Msg,#1:Name)notLeq sign(#19:Nonce ; n(#20:Name,
+    #21:Fresh); pke(hpke(data(#20:Name,#22:Fresh),pkey(#23:Name,#20:Name)),s),
+    #20:Name)=> sign(#0:Msg,#1:Name)inL .))

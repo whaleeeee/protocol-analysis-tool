@@ -1,0 +1,20 @@
+fmod MAUDE-NPA is
+  protecting GENERIC-TOOLS .
+
+  op attExtract : Nat -> System .
+  eq attExtract(N:Nat) = 
+      downAttack(
+       extract('ATTACK-STATE[upTerm(N:Nat)],PROTOCOL-SPECIFICATION-FIX-IRREDUCIBLE)) .          
+
+
+
+
+**** for testing
+  op glExtract : Qid -> GrammarList .
+  eq glExtract(glname:Qid) = 
+      downTerm(extract(qid(string(glname:Qid) + string('.GrammarList)), 
+                PROTOCOL-SPECIFICATION-FIX-IRREDUCIBLE),
+                (empty).GrammarRuleSet) .                
+
+endfm 
+

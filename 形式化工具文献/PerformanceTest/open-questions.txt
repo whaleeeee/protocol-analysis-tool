@@ -1,0 +1,15 @@
+
+- SATMC has a limit in the config files, what does this mean? 
+
+    satmc.config, line 22 : "max=30"
+
+  What is the meaning of this maximum and does it influence
+  behaviour/termination?
+
+  A: After inquiry with the authors, they have stated that this should
+  not be a problem, as they have not encountered hitting this limit, and
+  had even disabled it in their own tests. They put it in to enforce
+  termination in cases of e.g. loops. 
+  After testing anew with the limit disabled, it has turned out this
+  does not influence our tests.
+

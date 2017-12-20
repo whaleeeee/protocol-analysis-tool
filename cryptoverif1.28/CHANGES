@@ -1,0 +1,547 @@
+This file summarizes the most important changes between versions
+of the cryptographic protocol verifier.
+
+Version 1.28
+
+- Allow get, insert, and event in terms. (New, insert, event and event_abort
+  are forbidden in conditions of find and get.)
+- To prove an injective correspondence e1 ==> e2, also use the
+  variables defined after e1, in the same input...output block as e1.
+- Explain why the proof of correspondences fails
+- Allow using replication indices in arguments of events
+- Fixed several bugs (bad display of "insert" and "get"; missing occurrence
+  for user-specified transformations; type of the condition of get was not
+  checked; ...).
+
+Version 1.27
+
+- Simplify the game on-the-fly during expansion.
+- Added option "set useEqualitiesInSimplifyingFacts = true."
+  to improve simplification of facts using known equalities.
+- Modified the parsing of interactive commands so that one can copy-paste
+  commands of the "proof" part of a file.
+- Improved the simplification of "let pat = t in ..." when pat
+  contains nested tuples and/or several equality tests.
+- Fixed bug in the simplification of "let pat = t in ..."
+  when pat is a tuple: some variables of pat could erroneously
+  be defined when the pattern matching failed.
+- Fixed bug that could cause an internal error
+  "LetEqual terms should have a variable in the left-hand side"
+
+Version 1.26
+
+- Use compatibility between defined variables and
+between defined variables and executed program points
+to improve the precision of the proof of secrecy.
+- Fixed "Internal error: Invalid_argument("List.iter2")"
+when the number of arguments of insert does not match the arity
+of the table.
+- Fixed error message with events.
+
+Version 1.25
+
+- Use elsefind facts to prove that indices are distinct in
+the proof of secrecy.
+- Fixed "Internal error: Invalid_argument("List.map2")"
+in merging of branches.
+- Fixed stack overflow in the computation of probabilities
+in the cryptographic transformation.
+
+Version 1.24
+
+- Queries:
+  query secret x public_vars x1, ..., xn.
+  query secret1 x public_vars x1, ..., xn.
+to show (one-session) secrecy of x when the variables x1, ..., xn
+are public. This query is useful to show that several variables
+are independent secrets, with a single input file.
+- Added a specialised version of the Gap Diffie-Hellman assumption
+for prime order groups and random oracles with 2, 3, and 4 arguments
+in the library of cryptographic primitives.
+- Use elsefind facts to prove correspondences:
+1/ to prove injectivity (useful for protocols with a replay cache,
+for instance)
+2/ to infer more facts by making case distinctions depending on 
+the order of definition of variables.
+- Use facts inferred from the simultaneous definition of several
+variables in the proof of correspondences.
+- Improved collection of facts: when CryptoVerif collects the
+facts that hold at each program point, it can also take into account
+variables that cannot be defined at a certain program point, variables
+that cannot be simultaneously defined, and elsefind facts. (This is a
+bit costly, so it is disabled by default. You can enable it by 
+"set improvedFactCollection = true".)
+- Setting "set casesInCorresp = false" to disable the case distinction
+in the proof of correspondence properties, in case it is too slow.
+- Improved collection of facts and defined variables: take into
+account more often that the variables after the current program
+point in the current input-output block are defined; take into
+account the current program point and the order of definition
+of variables to eliminate some cases and to infer new facts
+(inequalities between indices of variables).
+- More precise treatment of elsefind facts: when a new variable x
+is defined, the elsefind facts that test the definition of x are
+not removed but updated.
+- When a "find" has a single branch that always succeeds,
+and the indices are not used, keep its "then" branch.
+- Simplify terms "if M then M1 else M2" inside conditions of find
+into (M && M1) || (not(M) && M2). 
+- New commands out_game, out_state, ... to output the current game,
+state, ... to a file instead of displaying them to the standard output.
+- Decreased memory usage
+- Fixed bug in the removal of assignments, which sometimes lead to an
+incorrect update of defined conditions of find.
+- Fixed bug in the update of "defined" conditions of find after
+simplification, which could lead to an internal error.
+- Fixed bug that could cause an internal error
+"equational theory has no neutral element in Terms.get_neutral"
+- Fixed infinite loop in replacement of a variable with its value
+- Fixed infinite loop in testing of the equality between terms
+taking into account known equalities.
+
+Version 1.23
+
+- By default, automatically remove assignments on variables defined 
+by "let" in conditions of find.
+- Definitions for IND-CCA2 symmetric encryption and INT-PTXT 
+symmetric encryption added to the cryptographic library;
+definition of IND-CCA2 and INT-PTXT symmetric encryption made
+more flexible by allowing the two properties to be applied in 
+any order.
+- Fixed bug in definition of IND-CCA2, INT-PTXT symmetric encryption,
+which could cause an infinite loop.
+
+Version 1.22
+
+- Improved global dependency analysis for find with complex
+  find conditions (containing themselves find, if, or let).
+- Allow variables that depend on b0 without characterizing
+  b0 in global dependency analysis.
+- Allow the user to specify the mapping from variables of the
+  game to variables of the equivalence, and the mapping from terms
+  of the game to oracles of equivalence, in the cryptographic
+  transformation.
+- Apply simplifications of booleans terms to all subterms, not only
+  to the root.
+- Fixed bug in cryptographic transformation, which could make it
+  fail unexpectedly.
+- Fixed bug in cryptographic transformation: when using known equalities
+  to transform terms, the defined conditions of find were not
+  correctly updated.
+
+Version 1.21
+
+- Display an explanation when a cryptographic transformation
+  fails (when it needs no random variable or at least one
+  random variable was provided)
+- Reimplemented the test of compatibility between definitions
+  of variables and between program points, to make it cleaner,
+  more precise, and faster
+- In expand, remove the find completely when all branches are removed
+- Improved display of long mathematical formulas in latex
+- Improved model of the Gap Diffie-Hellman assumption
+- Fixed bug that could cause an internal error in merging of branches,
+  when CryptoVerif did not manage to build a MergeArrays advised instruction.
+  It now gives no advice in this case.
+- Fixed missing update of defined conditions of find in
+  global dependency analysis
+- Fixed display bug for find with no branch at all
+
+Version 1.20
+
+- added modeling of the Gap Diffie-Hellman assumption
+- improved proof of secrecy, in particular for forward secrecy
+- improved merging of branches of if/find/let, to allow variables
+  with array accesses to be renamed between the branches (with
+  additional conditions so that this is sound).
+  Useful in particular for proving indistinguishability of
+  P1 and P2 by showing secrecy of b in the process
+  "if b then P1 else P2".
+  The merging of branches is no longer done within simplify;
+  it is done as a separate transformation after simplify.
+- improved collection of facts that hold at each program point,
+  by taking into account that certain definition points of variables
+  are not compatible.
+- improved the proof of correspondence assertions by distinguishing
+  cases depending on the definition points of variables. Removed the display
+  of advice since it is replaced by these case distinctions.
+- extended the command 'insert' to allow references to variables
+  known to be defined but not explicitly included in the 'defined'
+  conditions of 'find's above the inserted instruction. The 'defined'
+  conditions of these 'find's are updated accordingly.
+- improved case distinctions on the order in which variables
+  are defined: now both cases can be proved using "elsefind" facts,
+  in addition to proving one case via "elsefind" facts and the other
+  one by elimination of collisions.
+- improved elimination of collisions between terms t1 = t2
+  when t1 characterizes a large random value b[l] and
+  t2 contains b[l'] with l <> l'.
+- improved dependency analysis in conditions of find
+- improved the simplification of terms. More precisely,
+  improved usage of known equalities to test equality of
+  two given terms
+- use known equalities to determine the values of variables
+  in the cryptographic transformation (can be disabled with
+  "set useKnownEqualitiesInCryptoTransform = false.")
+- check that the defined variables are compatible also after
+  each "if". This is useful in case the condition of the "if" 
+  allows to simplify array indices of variables.
+- fixed two bugs in global dependency analysis
+- fixed bug that could lead to an internal error in the cryptographic 
+  transformation (some terms were incorrectly forbidden in the computation 
+  of the length of a term)
+
+Version 1.19
+
+- improved simplification by orienting equations f(...) = f'(...)
+  with function symbols at the root of both sides.
+- improved display of terms (parentheses omitted when useless,
+  added when useful for clarity)
+- fixed bug that could lead to Internal error: File
+  "transf_crypto.ml", line 824, characters 8-14: Assertion failed
+
+Version 1.18
+
+- allow length(t) in probability formulas, where t is a bounded type.
+- replace restrictions with constant assignments when their value is not
+  used.
+- improved again the "replace" transformation, in particular to take into
+  when one knows that constants are pairwise distinct.
+- fixed bug in transformation "move binder x" when x is defined by
+  let and has array references.
+- fixed termination problem in simplification.
+- fixed bug that could lead to Internal error: LetEqual terms should have a
+  variable in the left-hand side
+- separated the setting "set uniqueBranch = ..." into two:
+  a) "set uniqueBranch = ..." determines whether, when a branch of a 
+  find[unique] succeeds, we remove the other branches.
+  b) "set uniqueBranchReorganize = ..." determines whether, when a find[unique]
+  is in the condition / branch of another find, we reorganize the find.
+
+Version 1.17
+
+- support for equational theories using the declaration "equation".
+This new declaration leads to two incompatible changes:
+   - the declaration "fun f(T,T):T' [commut]." should now be written
+     	fun f(T,T):T'. 
+	equation commut(f).
+   - the declaration "expand Xor(T, xor)." should now be written
+   "expand Xor(T, xor, zero)." where zero designates the neutral element
+   for xor, a bitstring consisting only of zeroes.
+- the construct "event_abort e" replaces "event e; abort".
+- improved the "replace" transformation, so that it succeeds more often.
+The search depth for this transformation can be set by
+"set maxReplaceDepth = ..."
+- optimized the game simplification
+- documented the construct find[unique] in the manual.
+- warnings when one uses a replication above another replication or
+a parallel composition. Changed priorities in the parser, so that
+(!N P1 | !N P2) is interpreted as ((!N P1) | (!N P2)) and not as
+(!N (P1 | !N P2)).
+- generation of OCaml implementations: 
+   - check that the oracle above the beginning of a role has
+   a single return.
+   - check that oracle above a role are also included in a role.
+- fixed minor bugs in SSH example.
+- fixed bug that allowed declaring two oracles of the same name
+one after the other: O():= ... return(); O():= ...
+- fixed subtle bug that could lead to an incorrect computation
+of the facts that hold at a certain point in the game, due to
+some terms being physically equal inside the game.
+- fixed bug in which applying a collision statement may lead to
+storing links in it, which interfere with a subsequent application of the
+same collision statement.
+
+Version 1.16
+
+- improved explanation of probability computations
+- cleaned up the semantics of "find", by using temporary variables for
+the lookup.
+- channels must be identifiers in the initial game; indices of channels
+are always implicitly the current replication indices.
+- allow approximately uniform distributions for finite sets (bounded types),
+and non-uniform distributions for all typs (all random elements chosen by 
+"new" in the same type are chosen using the same distribution, called
+standard distribution for that type). 
+- simplify terms while expanding games, to reduce the size of the
+expanded game
+- removed bad advice sometimes given by the crypto transformation
+- when the instruction "success" fails to prove a correspondence,
+it may display user advice "SArename b", when it thinks that this
+instruction may help doing the proof.
+- removed setting "set minManualCollElim"
+- added a warning when identifiers are rebound in the input file.
+- fixed internal error "Game not found", which sometimes occurred
+when backtracking in the proof.
+- fixed bug that caused an internal error when a "new" occurred in the 
+condition of a "get"; this construct is now rejected with a correct error 
+message. 
+- fixed bug that could cause an internal error with option
+"set optimizeVars = true".
+- fixed bugs that could lead to a wrong transformed game or to an internal
+error when there were array accesses to variables bound by "get";
+such array accesses are now forbidden.
+- fixed bug that could cause useless renamings of variables defined
+in conditions of find and not used.
+- fixed bug that could cause an internal error when referring to 
+find indices in the right-hand side of an equivalence; such references are 
+now rejected with a correct error message.
+- fixed bug that caused an internal error in auto_sa_rename when
+there were array accesses to variables defined inside terms
+(but not conditions of find)
+
+Version 1.15
+
+- in the replace command, make case distinctions depending on the
+order of definition of variables, and take into account facts coming
+from conjunctions and disjunctions, to prove more facts, by David
+Cadé and Bruno Blanchet.
+- similar case distinctions in simplify.
+- when a fact is known, replace it by "true" elsewhere, by David Cadé.
+- implementation of the SSH Transport Layer Protocol, as an example
+(without key re-exchange, IGNORE and DISCONNECT messages, and with
+only one algorithm for each scheme), by David Cadé and Bruno Blanchet.
+- fixed bug that could cause an internal error in the crypto
+transformation.
+
+Version 1.14
+
+- after events inserted by insert_event, one aborts the game.
+- fixed bug: uf_cma_corrupt transformations must be manual,
+  this was omitted in default.ocvl
+
+Version 1.13
+
+- compilation of CryptoVerif specifications to Caml implementations,
+by David Cadé
+- specific constructs for key tables (insert/get), by David Cadé
+- function macros (letfun), by David Cadé
+- the global dependency analysis is now a separate transformation
+- in the "else" branch of let, record that the pattern-matching failed
+- in proofs, equivalences can now be designated by a name 
+  (either just an identifier, or name(f), where f is for instance a function symbol)
+  The old way of designating equivalences is kept for backward compatibility, 
+  but should be avoided. Since a new equivalence has been added for
+  (S)UF-CMA signatures, "crypto sign" is now ambiguous and should be replaced
+  with "crypto uf_cma(sign)".
+- extended the specification of MACs and signatures to allow the
+  corruption of secret keys.
+- when the input file name ends with ".ocv", CryptoVerif uses the oracles
+  front-end by default.
+- detailed explanation of the transformation performed between 2 games
+- minor changes so that the cryptographic transformation works more often
+- the option of find [unique] is back
+- fixed bug in the computation of probabilities
+- fixed bug that could prevent "simplify coll_elim <occurrences>" from
+  working
+- fixed bug: insert <occ> "let pat = M in" is now correctly rejected
+  when pat binds several times the same variable. 
+- the function option [decompos] is now ignored (it had bad effects)
+- removed the tricks that allowed to count the same eliminated collisions
+  only once in the whole sequence of games; they are hard to justify formally.
+
+Version 1.12
+
+- added flags [unchanged] and [computational], to specify when random
+choices are preserved by cryptographic transformations
+- instruction allowed_collisions to specify precisely the probabilities of
+collisions that can be eliminated
+- redone improvement of computation of probabilities when using 
+Shoup's lemma
+- basic emacs mode with coloring
+
+Version 1.11
+
+- change of license: CryptoVerif is now available under the 
+CeCILL-B license (BSD-style license)
+- modified definition of the random oracle model to use a keyed
+hash function; you will need to update your scripts that use 
+"expand ROM_hash".
+- doubled probabilities for secrecy properties (CryptoVerif previously
+displayed the probability of distinguishing the initial game from a
+game that perfectly preserves secrecy, which is half the probability of
+breaking secrecy).
+- support for the Decisional Diffie-Hellman assumption; 
+allow events in right-hand side of equivalences
+- merging of variables; improved merging of branches of
+if/let/find
+- option [noninteractive] for parameters, to optimize 
+computed probability bounds.
+- when no query is present in the input file, try to simplify the game
+as much as possible (instead of stopping immediately).
+- "collision" now considers independent restrictions.
+- removed "otheruses" and "[unique]" (still accepted for backward compatibility 
+but ignored)
+- undone improvement of computation of probabilities when using 
+Shoup's lemma
+- improved simplification of boolean terms, by trying to reach
+a contradiction
+- tried to remove "let x = cst_type" when possible
+- allow floating point constants in probability formulas
+- specification of xor added to the library of primitives
+
+Version 1.10pl1
+
+- fixed TeX display bug
+
+Version 1.10
+
+- support for the Computational Diffie-Hellman assumption:
+  - support for array indices as inputs in equivalences
+  - support for if/let/find/new inside conditions of find
+- possibility to designate the number of different calls to an oracle
+in probability formulas, for expressing more precise bounds.
+- manual insertion of events, which are proved later to have negligible
+probability
+- manual insertion of instructions, in particular case distinctions
+- manual replacement of a term with a equal term
+- manually guided elimination of collisions, in particular for passwords
+- exploit that the value of the successful branch/indices of certain 
+finds is unique
+- extended the "otheruses" condition to be able to replace new y:T; 
+x = enc(y,k) with new x: T; y = dec(x,k) for SPRP/ICM encryption
+and then remove the computation of y when it is not used (and conversely)
+- verification of well-formedness invariants after each game
+transformation (to make it easier to detect some bugs)
+- fixed bug in simplification that could cause missing "defined" conditions
+- fixed bug in expansion of terms that could cause references to variables
+before the corresponding "defined" condition
+- fixed bug in checking of equivalences that could lead to an
+internal error instead of a normal error message
+- fixed bug in cryptographic transformations, in which the transformation
+was applied for terms in conditions of find even when these terms should
+have been evaluated at most once for each choice of random coins.
+- fixed bug in the computation of probabilities for cryptographic 
+transformations when the transformed expression appears in the condition 
+of find, and in some cases when transformed expressions appear in different 
+branches of if/let/find.
+- fixed bug in the cryptographic transformation that allowed to 
+transform an expression that occurred several times in the game,
+when there was no replication at all in the equivalence.
+- fixed bug in the cryptographic transformation: a recheck of the
+arguments of oracles was missing.
+- fixed bug in the verification of probability formulae; improved
+probability formulae for primitives defined in default.cvl/default.ocvl.
+- fixed bug that prevented the use of "set" commands in proof environments.
+- fixed two bugs in removal of assignments, one that could lead to removing
+the definition of a variable while keeping a "defined" condition on it,
+one that could lead to incorrectly changing the meaning of "defined" conditions.
+- renamed the executable program to cryptoverif
+
+Version 1.09
+
+- move "new x" even when x has array references, but only inside
+the same output process.
+- move "let x = t in" when x has no array references and the let
+can be moved under a if/let/find in which x is used in a single branch.
+(The term t is then computed in fewer cases.)
+- minor improvements in the proof strategy (in particular, after SArename,
+rename variables defined by several restrictions and without array references).
+- possible to deactivate the merging of if/let/find branches by
+"set mergeBranches = false."
+- fixed bug in cryptographic transformation that could lead to referencing
+variables that were not defined.
+- fixed bug in cryptographic transformation that could lead to missing
+defined conditions.
+- fixed display bug that could lead to a confusion between different 
+variables when the input file contains variable names of the form
+XXX_nnn where nnn is a number.
+
+Version 1.08
+
+- merging of branches of if/let/find when they execute the same code.
+- fixed a call to "List.for_all2" in which the two lists could have different
+lengths and a missing renaming of "otheruses" conditions in cryptotransf.ml 
+(thanks to Yoshikazu Hanatani for reporting these bugs).
+- improved again treatment of "elsefind" facts.
+
+Version 1.07pl1
+
+Minor bug fixes and improvements:
+- fixed bug in the definition of collision-resistant hash functions in
+the library of cryptographic primitives.
+- fixed bug in the simplification of "find" inside "else" branches 
+of "let".
+- fixed a call to "List.for_all2" in which the two lists could have different
+lengths.
+- improved treatment of "elsefind" facts.
+- improved proof of Needham-Schroeder public-key when the key is
+the hash of Na and Nb (see authexamples/needham-schroeder-pkcorr3BlockKeyHash).
+- the type must be explicitly given when a variable is defined in a tuple
+pattern (i.e., in "let (...,x:T,...) = ... in ...", the type T cannot be 
+omitted).
+- various display improvements.
+
+Version 1.07
+
+- Possibility to include proof indications in the CryptoVerif input
+file itself (instead of always entering them interactively).
+- Macro mechanism, used to define a library of standard cryptographic
+primitives that can easily be reused when writing new protocols.
+- Improvements in the proof strategy, in particular to automate the
+proof of public-key protocols.
+(The changes in the proof strategy may require updates in manual
+proofs. It is recommended to update your scripts to take advantage
+of the new features. However, if you wish to ensure maximal compatibility
+with previous versions of CryptoVerif, you can add the settings:
+  set simplifyAfterSARename = false.
+  set noAdviceSimplify = true.
+)
+
+Version 1.06pl3
+
+- Added priorities among the various functions of an equivalence
+- Check that all pairs of variables that must be defined at a certain
+program point can be simultaneously defined.
+- When an advised transformation renames a variable (e.g. SArename), 
+rename this variable accordingly in the transformations to do next.
+
+Versions 1.06pl1 and 1.06pl2
+
+- Minor bug fixes.
+
+Version 1.06
+
+- Allow injective events to occur several times in a process, but in
+different branches of if/let/find and under replications of the same type.
+
+Version 1.05
+
+- Improvements in the proof of correspondence assertions
+
+Version 1.04
+
+- Improvements in the computation of probabilities of collisions
+- Available under the CeCILL license
+
+Version 1.03
+
+- Improvements in simplification.
+- Improvements in the computation of probabilities;
+computation of the runtime of the games.
+- Proof of injective correspondence assertions
+- New front-end with a syntax closer to cryptographic games.
+(The old front-end is still available.)
+
+Version 1.02
+
+- Renamed SSArename to SArename, secrecy to one-session secrecy,
+and semantic security to secrecy, to be coherent with the research
+papers.
+- First version of the user manual.
+
+Version 1.01
+
+- Improved simplification, to remove else branches of find more often.
+- Support for commutative function symbols
+- Proof of non-injective correspondence assertions
+- Extensions for one-way trapdoor permutations:
+	* In the left-hand side of equivalences, allow functions that
+	do not use all random variables above them.
+	* Allow applying a cryptographic transformation when some
+	transformed terms occur in conditions of find.
+- Exact security: bound the probability of an attack.
+
+Version 1.00
+
+First release.

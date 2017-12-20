@@ -1,0 +1,31 @@
+
+****  IMaude core modules  assumes 
+**** loading utilities
+load lib-util
+**** load ../Util/load-imaude-util *** get the latest
+
+***(fmod UTIL is
+  inc NAT-QID .  
+  inc STRING-OUTPUT-HACK .
+endfm)***
+
+load lib-meta
+**** load ../Meta/load-metalib the latest
+
+load lib-imaude
+**** load load-imaude-lib
+
+mod IMAUDE is
+  inc REWRITE .
+  inc FILEMANAGER .  
+  inc SEQUENCER .  
+  inc G2D .
+endm
+
+
+**** loop init .
+**** (setqc maudeName maude)
+
+
+
+

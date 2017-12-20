@@ -1,0 +1,1156 @@
+******************************************************************************
+**** extends imaude-core to display strand bundles
+**** Assumes loaded npa-maude
+
+mod NPA-ASSISTANT is
+ inc IMAUDE .
+ inc PARSE-SEXP-QIDS .
+
+
+var ctl : Control .
+var wait4s : Wait4Set .
+vars reqQ reqQ0 reqQ1 reqQ' : RequestQ .
+vars es es' es0 es1 : ESet .
+var ee? : Entry? .
+vars log log' : Log .
+
+vars  fname tmp modname sort  g2dname g2dvname maudename : Qid .
+vars  protocol  grammarFname aname q  tname step : Qid .
+vars  outQ toks toks' anames ptoks ctoks toks0 toks1 qidl : QidList .
+
+vars t grammarT sysT idT idSysT idSysST idSysST0 idSysST1 idSysST2 idSysST3 : Term .
+vars attackT asysT  filterT : Term .
+vars res?? res0?? res1?? res2?? : [ResultPair?] .
+var  res3?? : [ResultTriple?] .
+var b : Bool .
+vars str ?string counter level newLevel lastLevel : String .
+var anum? : FindResult .
+var n : Nat .
+ 
+var mod : Module .
+vars tnotes tnotes' tnotes'' : Notes .
+
+
+***** names
+
+  op npaModName : -> Qid .
+  eq npaModName = 'MAUDE-NPA .
+  op npaMod : -> Module .
+  eq npaMod = [npaModName] .
+
+  op mkGrammarFileName : Qid -> Qid .
+  eq mkGrammarFileName(protocol) = qid(string(protocol) + "-grammar.txt") .
+
+
+  op mtIdSysSTv : -> TVal .
+  eq mtIdSysSTv = tm(npaModName,'empty.IdSystemSet) .
+
+  op mtGrammarTv : -> TVal .
+  eq mtGrammarTv = tm(npaModName,'none.GrammarList) .
+
+
+******************************************************************
+******* stuff added by Sonia
+*****************************************************************
+
+vars infoFname infoFname2 infoFname3 infoFname4 : Qid .
+vars savedSessionFname savedSessionFname2 restoredSessionFname : Qid .
+
+var npaToks : QidList .
+var myName : Qid .
+vars currentLevel updatedCurrentLevel : Qid .
+var number : String .
+var nlevel : Qid .
+var levelToks textToks : QidList .
+vars stringLevel levelString  : String .
+var tname2 : Qid .
+ vars clevelsS nlevelS nextlS : String .
+ var nextLevelQid : Qid .
+
+ 
+
+
+******** functions
+
+  op qidl2string : QidList -> String .
+  eq qidl2string(nil) = "" .
+  eq qidl2string(q qidl) = string(q) + " " + qidl2string(qidl) .
+
+op term2QidList : Module Term -> QidList .
+  eq term2QidList(mod,t)
+	= metaPrettyPrint(mod,t,mixfix flat number format) .
+
+--- equations to create a counter of levels generated
+
+  op getLevelCounter : ESet -> String .
+  op incLevelCounter : ESet -> ESet .
+  op incLevelCounter : ESet Nat -> ESet .
+
+  eq getLevelCounter(es) = 
+          svalString(getVal(es,'sval,'levelCounter,sv("0"))) .
+
+  eq incLevelCounter(es) = incLevelCounter(es,1) .
+  eq incLevelCounter(es,n) = 
+       addEntry(es,'sval,'levelCounter,
+                sv(string(rat(getLevelCounter(es),10) + n,10))) .
+
+  
+
+
+**************************************************************
+
+
+
+*****************************************************************************
+**** helper --- these should go in a lib
+  op qidl2squotes : QidList -> String .
+  eq qidl2squotes(nil) = "" .
+  eq qidl2squotes(q qidl) = squote(string(q)) + " " + qidl2squotes(qidl) .
+  
+  op findQ : QidList Qid -> FindResult . *** index or notFound .
+  eq findQ(toks0 q toks1,q)  = size(toks0) .
+  eq findQ(toks,q)  = notFound [owise] .
+
+  
+  op findQ : QidList Qid Nat -> FindResult .
+  eq findQ(nil,q,n) = notFound .
+  eq findQ(q toks0,aname,n) =
+       (if q == aname then n else findQ(toks0,aname,s n) fi)  .
+  
+  op stringArrayTemplate : -> String [ctor] .
+  eq stringArrayTemplate = "(array java.lang.String %strings )" .
+
+      
+  op term2String : Module Term -> String .
+  eq term2String(mod,t) 
+       = removeBQs(qidl2str(metaPrettyPrint(mod,t,mixfix flat number)),0,"") .
+
+
+******************************************************************************
+**** From PLA-AUX
+******************************************************************************
+***** for conditional ESet functions
+
+  sort BoolESet .
+  op `{_,_`} : Bool ESet -> BoolESet [ctor] .
+  op be2b : BoolESet -> Bool .
+  op be2e : BoolESet -> ESet .
+  eq be2b({b,es}) = b .
+  eq be2e({b,es}) = es .
+
+**** gensym hack for generating new ids 
+
+  op getGlobalCounter : ESet -> String .
+  op incGlobalCounter : ESet -> ESet .
+  op incGlobalCounter : ESet Nat -> ESet .
+
+  eq getGlobalCounter(es) = 
+          svalString(getVal(es,'sval,'globalCounter,sv("0"))) .
+  eq incGlobalCounter(es) = incGlobalCounter(es,1) .
+  eq incGlobalCounter(es,n) = 
+       addEntry(es,'sval,'globalCounter,
+                sv(string(rat(getGlobalCounter(es),10) + n,10))) .
+
+  op stringInc : String -> String .
+  op stringInc : String Nat -> String .
+  eq stringInc(str) = stringInc(str,1) .
+  eq stringInc(str,n) = 
+      (if string(rat(str,10) + n, 10) :: String
+       then string(rat(str,10) + n, 10) 
+       else str fi) .
+
+******************************************************************************
+**** initializing the NPA environment
+***** initNPAeset
+****   initializes maudeName, g2dName, g2dVname globalCounter
+******************************************************************************
+ 
+op initNPAeset  : ESet Qid Qid Qid -> ESet .
+eq initNPAeset(es,maudename,g2dname,g2dvname) =
+       addEntry(
+        addEntry(
+          addEntry(  
+            addEntry(es, 
+                'qval, 'maudeName, ql(maudename)), 
+                'qval, 'g2dName, ql(g2dname)), 
+                'qval, 'g2dVName, ql(g2dvname)),
+                'sval, 'globalCounter, sv("0")) .
+
+eq isReq('initNPAeset) = true .
+eq enabled(wait4s,
+        req('initNPAeset, ql(maudename g2dname g2dvname toks),reqQ)) = true .
+
+rl[initNPAeset]:
+   [nil, 
+    st(processing(req('initNPAeset, ql(maudename g2dname g2dvname toks),
+                      reqQ')),
+     wait4s,reqQ,es,log),
+     outQ]
+   =>
+   [nil, 
+    st(ready, wait4s, (reqQ reqQ'),
+       initNPAeset(es,maudename,g2dname,g2dvname),log), 
+    outQ] .
+
+
+******************************************************************************
+**** initialize NPAmanager
+**** **** (apply defNPAManager "NS" (array java.lang.String "a0" "a1"))
+******************************************************************************
+  eq isReq('initNPAManager) = true .
+  eq enabled(wait4s,req('initNPAManager,ql(g2dvname protocol toks),reqQ)) = 
+      not(waiting4(wait4s,g2dvname)) .
+
+  crl[initNPAManager]:
+   [nil,                                                 *** attacks
+    st(processing(req('initNPAManager, ql(g2dvname protocol toks),reqQ')), 
+       wait4s,reqQ,es,log), 
+    outQ]
+     =>
+   [nil,  
+    st(ready,
+       (wait4s !
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('initNPAManager g2dvname protocol toks),reqQ'))), 
+       reqQ,
+       es',
+       log), outQ 
+     g2dvname '\n maudename '\n toks' maudePrompt ]
+   if maudename :=  getMaudeName(es)
+   /\ es' := addEntry(
+                    addEntry(es,'qval,'attacks protocol,ql(toks)),
+                            'qval,'knownProtocols,ql(protocol))
+   /\ ?string :=
+        withAck(fillTemplate(defNPAManagerTemplate,
+                            (("%protocol" :~ squote(string(protocol))),
+                             ("%attacks" :~ fillTemplate(stringArrayTemplate,
+                             ("%strings" :~ qidl2squotes(toks)))) )),
+                 maudename,g2dvname) 
+   /\ toks' := str2toks(?string) .
+
+op defNPAManagerTemplate : -> String .
+eq defNPAManagerTemplate = "(apply defNPAManager %protocol %attacks)" .
+
+
+******************************************************************************
+**** GrammarList  'none.GrammarList the empty list
+***** managing grammars
+******************************************************************************
+
+eq isReq('generateGrammar) = true .
+eq enabled(wait4s,req('generateGrammar,ql(protocol toks),reqQ0)) = true .
+
+crl[generateGrammar]:
+    [nil,
+     st(processing(req('generateGrammar,ql(protocol toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+    [nil,
+     st(ready, wait4s, 
+        (reqQ reqQ0),
+         es',
+         log),
+     outQ ] 
+   if es' := generateGrammar(es,npaModName,protocol)  .
+
+  op generateGrammar : ESet Qid Qid -> ESet .
+  ceq generateGrammar(es,modname, protocol) = 
+      addEntry(es, 'tval,'grammar protocol, tm(modname,grammarT))
+  if res?? := metaReduce([modname],'genGrammars.GrammarList)
+  /\ grammarT := (if res?? :: ResultPair
+                  then getTerm(res??)
+                  else 'none.GrammarList fi) .
+
+eq isReq('saveGrammar) = true .
+eq enabled(wait4s,req('saveGrammar,ql(protocol grammarFname toks),reqQ0)) = true .
+
+  crl[saveGrammar]:
+   [nil,  
+    st(processing(req('saveGrammar, ql(protocol grammarFname toks),reqQ0)), 
+       wait4s,reqQ,es,log), 
+   outQ] 
+  =>
+   [nil,
+    st(ready, wait4s, (reqQ reqQ1), es, log), 
+    outQ] 
+  if   tm(modname,grammarT) 
+        := getVal(es,'tval,'grammar protocol, tm('BOOL,'true.Bool))
+  /\ reqQ1 :=  
+     (if modname == 'BOOL  **** no grammar to save
+      then reqQ0   
+      else req('save,ql(grammarFname 'C 'entry 'tval 'grammar protocol), reqQ0)  
+      fi)  .
+
+  eq isReq('restoreGrammar) = true .
+  eq enabled(wait4s,req('restoreGrammar,ql(protocol grammarFname toks),reqQ)) = true .
+
+  crl[restoreGrammar]:
+   [nil,  
+    st(processing(req('restoreGrammar, ql(protocol grammarFname toks),reqQ0)), 
+       wait4s,reqQ,es,log), 
+   outQ] 
+  =>
+   [nil,
+    st(ready, wait4s, (reqQ reqQ1), es, log), 
+    outQ] 
+  if  reqQ1 := req('restore,ql(grammarFname 'tmp 'entry), reqQ0)  .
+
+******************************************************************************
+**** Creating, extending Search Trees
+******************************************************************************
+
+  eq isReq('createMtTree) = true .
+  eq enabled(wait4s,
+       req('createMtTree,ql(g2dvname protocol aname tname toks),reqQ0))
+            = not(waiting4(wait4s,g2dvname)) .
+
+crl[createMtTree]:
+    [nil,
+     st(processing(req('createMtTree,ql(g2dvname protocol aname tname toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('createMtTree g2dvname protocol aname tname toks), 
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(createMtTreeExp(protocol,aname,tname), maudename, g2dvname) 
+    /\  toks' := str2toks(?string) 
+ .
+
+
+  op createMtTreeTemplate : -> String .
+  eq createMtTreeTemplate = 
+      "(apply createMtTree %tname %aname %protocol %root?)" .
+
+  op createMtTreeExp : Qid Qid Qid -> String .
+  eq createMtTreeExp(protocol,aname,tname) =
+    fillTemplate(createMtTreeTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%protocol" :~ squote(string(protocol))),
+           ("%root?" :~ squote("true")),
+           ("%aname" :~ squote(string(aname))) )) .
+
+
+******************************************************************************
+  eq isReq('extendTree) = true .
+  eq enabled(wait4s,
+       req('extendTree,ql(g2dvname tname currentLevel toks),reqQ0))
+            = not(waiting4(wait4s,g2dvname)) .
+
+crl[extendTree]:
+    [nil,
+     st(processing(req('extendTree,ql(g2dvname  tname  currentLevel toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('extendTree g2dvname tname currentLevel toks),  
+                   reqQ0))), 
+       reqQ, es', log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(extendTreeExp(es,tname), maudename, g2dvname) 
+    /\  toks' := str2toks(?string)
+    /\ tm(modname,idSysST) := getVal(es,'tval,'lastFringe tname,mtIdSysSTv) 
+    /\ es' := addEntry(es,
+			'tval, 'level currentLevel tname, tm(modname,idSysST))
+.
+
+
+  op extendTreeTemplate : -> String .
+  eq extendTreeTemplate = 
+      "(apply extendNPATree %tname %fringe)" .
+
+  op extendTreeExp : ESet Qid  -> String .
+  ceq extendTreeExp(es,tname) =
+    fillTemplate(extendTreeTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%fringe" :~ squote(str))) )
+  if tm(modname,idSysST) := getVal(es,'tval,'lastFringe tname,mtIdSysSTv)
+   /\ str := term2String([modname],idSysST)
+  .
+
+******************************************************************************
+**** initializing, updating display
+**** (apply showNPAGraph tname "NPAManager" title subtitle toolBarFunNPA)
+******************************************************************************
+  eq isReq('showNPATree) = true .
+  eq enabled(wait4s,
+       req('showNPATree,ql(g2dvname tname aname protocol toks),reqQ0))
+            = not(waiting4(wait4s,g2dvname)) .
+
+crl[showNPATree]:
+    [nil,
+     st(processing(req('showNPATree,ql(g2dvname tname aname protocol toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('showNPATree g2dvname tname aname protocol toks), 
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(showNPATreeExp(es,tname,aname,protocol), maudename, g2dvname) 
+    /\  toks' := str2toks(?string)  .
+
+  op showNPATreeTemplate : -> String .
+  eq showNPATreeTemplate = 
+  "(apply showNPAGraph %tname \"NPAManager\"  %protocol %title %subtitle toolBarFunNPA)"
+    .
+
+  op showNPATreeExp : ESet Qid Qid Qid -> String .
+  ceq showNPATreeExp(es,tname, aname,protocol) =
+    fillTemplate(showNPATreeTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%protocol" :~ squote(string(protocol))),
+           ("%title" :~ squote("Attack " + string(aname))),
+           ("%subtitle" :~ squote("")) ) )
+  if tm(modname,idSysST) := getVal(es,'tval,'lastFringe tname,mtIdSysSTv)
+   /\ str := term2String([modname],idSysST)
+  .
+
+******************************************************************************
+  eq isReq('redisplayNPATree) = true .
+  eq enabled(wait4s,
+       req('redisplayNPATree,ql(g2dvname tname toks),reqQ0))
+            = not(waiting4(wait4s,g2dvname)) .
+
+crl[redisplayNPATree]:
+    [nil,
+     st(processing(req('redisplayNPATree,ql(g2dvname tname toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('redisplayNPATree g2dvname tname toks), 
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(redisplayNPATreeExp(es,tname), maudename, g2dvname) 
+    /\  toks' := str2toks(?string)  .
+
+  op redisplayNPATreeTemplate : -> String .
+  eq redisplayNPATreeTemplate = "(apply showUpDatedNPAGraph %tname )" .
+
+  op redisplayNPATreeExp : ESet  Qid -> String .
+  eq redisplayNPATreeExp(es,tname) =
+    fillTemplate(redisplayNPATreeTemplate,
+          (("%tname" :~ squote(string(tname)))))  .
+
+
+
+******************************************************************************
+**** initialize attack
+******************************************************************************
+**** IdSystemSet-or-Error 
+****  initialize the analysis of an attack
+***(seq
+     (apply createEmptyTree tname aname protocol "true")
+     (apply extendNPATree  tname IdSysSetStr )
+     (apply showNPAGraph tname "NPAManager" (concat "Attack " aname) ""
+       toolBarFunNPA )
+   )
+******************************************************************************
+******************************************************************************
+  
+  eq isReq('initAttack) = true .
+  eq enabled(wait4s, req('initAttack,ql(g2dvname protocol aname toks),reqQ0))
+            = true .
+
+  op initAttack : ESet Qid Qid Qid -> ESet .
+  ceq initAttack(es,protocol,aname,tname) = es'
+  if  ql(anames) := getVal(es,'qval, 'attacks protocol,ql(nil))
+  /\ anum? := findQ(anames,aname)
+  /\ res?? := (if anum? :: Nat
+            then metaReduce(npaMod,'attExtract[upTerm(anum?)]) 
+            else failure fi)
+  /\ attackT := (if res?? :: ResultPair
+              then getTerm(res??)
+              else 'empty.SystemSet fi)
+  /\ tm(modname,grammarT) := getVal(es,'tval,'grammar protocol,mtGrammarTv)
+   /\ res0?? := metaReduce(npaMod,
+               'searchState[grammarT, 'all.Filters,upTerm(0),'unbounded.Bound, 
+                           'unbounded.Bound,'true.Bool, 'empty.IdSystemSet, 
+                         'setId[upTerm(1),attackT]]) 
+   /\ idSysST := (if res0?? :: ResultPair
+               then getTerm(res0??)
+              else 'empty.IdSystemSet fi)
+  /\ tnotes := ( ("protocol" := ql(protocol)),
+               ("aname" := ql(aname)),
+               ("filters" := tm(modname, 'all.Filters)),
+               ("attackSys" := tm(modname,attackT)),
+               ("level" := sv("1")),
+	       ("lastLevel" := sv("1")) )
+  /\ es' :=
+      addEntry(
+       addEntry(
+        addEntry(es,       
+          'tval, 'lastFringe tname, tm(npaModName,idSysST)),              
+             'tval, 'searchTree tname, tnotes, tm(npaModName,idSysST)),
+	  	   'tval, 'attack  tname, tm(npaModName,attackT))      . ******** here is where the results of the analysis are stored
+
+crl[initAttack]:
+    [nil,
+     st(processing(req('initAttack,ql(protocol g2dvname aname toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ]
+    => 
+   [nil,  
+    st(ready,
+       wait4s,
+      (reqQ  req('logreq, 
+                   ql('initAttack g2dvname protocol aname toks), 
+                   reqQ1)), 
+****       (reqQ  reqQ1),
+       initAttack(incGlobalCounter(es),protocol,aname,tname),
+       log), outQ]
+  if counter := getGlobalCounter(es)
+  /\ tname := qid("tree" + counter)
+  /\ reqQ1 :=
+     req('createMtTree,ql(g2dvname protocol aname tname),
+       req('extendTree, ql(g2dvname tname '0),  
+         req('startListener2, ql(tname 'npareq g2dvname),
+           req('showNPATree, ql(g2dvname tname aname protocol),
+	     reqQ0)   )))   
+.
+
+
+
+******************************************************************************
+**** search to next level
+***(
+apply searchState to searchTree
+update level, lastFringe and searchTree
+tell g2d about the new fringe, and redisplay
+)
+******************************************************************************
+
+
+  eq isReq('nextLevel) = true .
+  eq enabled(wait4s, req('nextLevel,ql(tname g2dvname step currentLevel toks),reqQ0))
+            = true .
+
+  op nextLevel : ESet Qid Qid -> ESet .
+ 
+ ceq nextLevel(es,tname,step) = es'  
+  if tm(modname, idSysST) := getVal(es,'tval,'searchTree tname, mtIdSysSTv)
+  /\  tnotes := getNotes(es,'tval,'searchTree tname) 
+   /\ tm(modname, attackT) := getVal(es, 'tval, 'attack tname,  mtIdSysSTv)
+  /\ tm(modname,idSysST0) := getVal(es,'tval,'lastFringe tname,mtIdSysSTv)
+  /\ ql(protocol) := lookupd(tnotes,"protocol",ql('unknown))
+  /\ n := (if rat(string(step),10) :: Nat
+              then rat(string(step),10)
+              else 0 fi)
+  /\ tm(modname,grammarT) := getVal(es,'tval,'grammar protocol,mtGrammarTv)
+  /\ res0?? := metaReduce(npaMod, 
+     	       	      'search[grammarT, attackT, 'all.Filters, upTerm(n),'unbounded.Bound,
+		 		    'unbounded.Bound,'true.Bool ] )
+  /\ idSysST1 := (if res0?? :: ResultPair
+              then getTerm(res0??)
+              else 'empty.IdSystemSet fi)
+  /\ idSysST2 := concSysT([modname],idSysST, idSysST1) ***** idSysST contains the previous levels and idSystST1 the new ones. 
+                                                                                           *****idSysST2 is the concatenation of both of them. 
+  /\ sv(level) := lookupd(tnotes,"level", sv("1"))
+  /\ sv(lastLevel) := lookupd(tnotes,"lastLevel",sv("1"))
+  /\ tnotes' := insert("level",sv(stringInc(level,1)),tnotes)  ---- n
+ /\ tnotes'' := insert("lastLevel",sv(stringInc(lastLevel,1)),tnotes')  ---- n
+  /\ es' :=	
+        addEntry(
+          addEntry(es,
+            'tval, 'lastFringe tname, tm(npaModName,idSysST1)),              
+            'tval, 'searchTree tname, tnotes'', tm(npaModName,idSysST2)) .
+
+
+crl[nextLevel]:
+    [nil,
+     st(processing(req('nextLevel,ql(tname g2dvname step currentLevel toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    =>  
+   [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es', log),
+        outQ ]
+    if  es' := nextLevel(es,tname,step)     
+      /\ tm(modname, idSysST) := getVal(es,'tval,'searchTree tname, mtIdSysSTv)  
+    /\ reqQ1 :=
+        req('extendTree,ql(g2dvname tname currentLevel),
+            req('redisplayNPATree,ql(g2dvname tname),
+	      reqQ0))
+ .      
+
+op concSysT : Module Term Term -> Term .
+ceq concSysT(mod,idSysST, idSysST1) = idSysST2
+ if res0?? := metaReduce(mod,'__[idSysST, idSysST1])
+  /\ idSysST2 := (if res0?? :: ResultPair
+                  then getTerm(res0??)
+                  else 'empty.IdSystemSet  fi) .
+
+
+
+
+
+****************************
+--- Sonia stuff
+***************************
+
+
+*********************************************************************************************
+*** Rules and equations to save a Maude-NPA analysis session
+*********************************************************************************************
+
+---------------------------------------------------------------
+*** saveNPASession : 
+--- save important entries of a Maude-NPA analysis session
+--- add the request to save the level entries to the request Queue
+---------------------------------------------------------------
+  eq isReq('saveNPASession) = true .
+  eq enabled(wait4s, req('saveNPASession, ql(tname g2dvname protocol savedSessionFname nlevel toks),reqQ0))
+            = true .
+
+  crl[saveNPASession]:
+    [nil,
+     st(processing(req('saveNPASession, ql(tname g2dvname protocol savedSessionFname nlevel toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es', log),  *****'logreq?
+          outQ  ]
+    if  maudename :=  getMaudeName(es)
+    /\ tnotes := getNotes(es,'tval,'searchTree tname)   
+    /\ tnotes' := insert("level",sv("0"),tnotes)
+   /\  tm(modname, idSysST) := getVal(es,'tval,'searchTree tname, mtIdSysSTv)
+    /\ es' :=	
+         addEntry(es,            
+            'tval, 'searchTree tname, tnotes', tm(npaModName,idSysST))
+    /\ reqQ1 := req('save,ql(savedSessionFname 'A 'entry 'qval 'maudeName), 
+	      	       	         req('save,ql(savedSessionFname 'A 'entry 'qval 'g2dName),
+				   req('save,ql(savedSessionFname 'A 'entry 'qval 'g2dVName),
+				     req('save,ql(savedSessionFname 'A 'entry 'sval 'globalCounter),
+				     	req('save,ql(savedSessionFname 'A 'entry 'tval 'attack tname),
+					   req('save,ql(savedSessionFname 'A 'entry 'tval 'lastFringe tname),
+  				     	      req('save,ql(savedSessionFname 'A 'entry 'tval 'searchTree tname),
+					         req('save,ql(savedSessionFname 'A 'entry 'qval 'attacks protocol),
+						     req('save,ql(savedSessionFname 'A 'entry 'qval 'knownProtocols),
+						         req('save,ql(savedSessionFname 'A 'entry 'tval 'grammar protocol),
+							   req('saveLevels,ql(g2dvname tname savedSessionFname '0 nlevel), 
+          					---	     req('updateMessageArea,ql(g2dvname tname 'yes 'Session 'was 'saved 'succesfully ),  *********************************
+				            reqQ0)))))))))) )  --- )
+  . 
+ 
+  
+
+  eq isReq('saveLevels) = true .
+  eq enabled(wait4s, req('saveLevels,ql(g2dvname tname savedSessionFname currentLevel nlevel toks), reqQ0)) 
+   = true .
+
+crl[saveLevels]:
+    [nil,
+     st(processing(req('saveLevels,ql(g2dvname tname savedSessionFname currentLevel nlevel toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+ [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es, log),
+        outQ ]
+   if clevelsS := string(currentLevel)
+    /\ nlevelS := string(nlevel)
+    /\ nextlS := stringInc(clevelsS)
+    /\ nextLevelQid := qid(nextlS)
+    /\ reqQ1 := getReqSave(clevelsS, nlevelS,nextlS,reqQ0,g2dvname,tname,currentLevel,nlevel,savedSessionFname) 
+. 
+
+op getReqSave : String String String RequestQ Qid Qid Qid Qid Qid -> RequestQ .  
+eq getReqSave(clevelsS,nlevelS,nextlS,reqQ0,g2dvname,tname,currentLevel,nlevel,savedSessionFname) =  
+    		( if rat(clevelsS,10) + 1 < rat(nlevelS,10)   then  
+		      req('save,ql(savedSessionFname 'A 'entry 'tval 'level currentLevel tname),
+		          req('saveLevels, ql(g2dvname tname savedSessionFname qid(nextlS) nlevel ), reqQ0))
+		     else 
+		           req('save,ql(savedSessionFname 'A 'entry 'tval 'level currentLevel tname), 
+			     reqQ0)
+	          fi )  .
+
+**************************************************************
+*** Rules and Equations to Restore a Maude-NPA Session
+**************************************************************
+
+  eq isReq('restoreNPASession) = true .
+  eq enabled(wait4s, req('restoreNPASession, ql(protocol tname savedSessionFname toks),reqQ0))
+            = true .
+
+ crl[restoreNPASession]:
+    [nil,
+     st(processing(req('restoreNPASession, ql(protocol tname savedSessionFname toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es, log),
+   outQ ]
+    if   reqQ1 := req('restore,ql(savedSessionFname 'maudeName 'entry ), 
+    	       	  	    req('restore,ql(savedSessionFname 'g2dName 'entry),
+			   	 req('restore,ql(savedSessionFname 'g2dVName 'entry ),	
+				   req('restore,ql(savedSessionFname 'globalCounter 'entry ),	
+				     req('restore,ql(savedSessionFname 'knownProtocols 'entry),
+				       req('restore,ql(savedSessionFname 'tmp 'entry),  ---this restores the rest of the entries identified by two or more qids
+						 reqQ0)))))) .
+
+
+----------------------------------------------------------------------------------------
+---  restoreLevel: IMaude rule to make the graphics2d actor execute the JLambda funtion restoreLevelEntries
+----------------------------------------------------------------------------------------
+
+  eq isReq('restoreLevel) = true .
+  eq enabled(wait4s, req('restoreLevel, ql(g2dvname tname restoredSessionFname toks), reqQ0))
+   = true .
+
+  crl[restoreLevel]:
+       [nil,
+     st(processing( req('restoreLevel, ql(g2dvname tname restoredSessionFname toks),
+                       reqQ0)),
+        wait4s,reqQ,es,log),  
+       outQ  ]
+    =>  
+   [nil,  
+    st(ready,
+       wait4s, 
+       reqQ , es, log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if   tnotes := getNotes(es,'tval,'searchTree tname)  
+    --- /\ sv(level) := lookupd(tnotes,"level", sv("0"))
+     /\ sv(lastLevel) := lookupd(tnotes,"lastLevel", sv("0"))
+     /\ maudename :=  getMaudeName(es)
+     /\ ?string :=
+            withAck(restoreLevelExp(restoredSessionFname,tname,qid(lastLevel)), maudename, g2dvname) 
+     /\  toks' := str2toks(?string)
+.  
+
+  op restoreLevelTemplate : -> String .
+  eq restoreLevelTemplate = 
+      "(apply restoreLevelEntries %restoreFile %tname %lastLevel)" .
+
+  op restoreLevelExp : Qid Qid Qid -> String .
+  eq restoreLevelExp(restoredSessionFname,tname,nlevel) =
+    fillTemplate(restoreLevelTemplate,
+          (("%restoreFile" :~ squote(string(restoredSessionFname))),
+           ("%tname" :~  squote(string(tname))), 
+	   ("%lastLevel"  :~ squote(string(nlevel)) ) )) .
+
+
+---------------------------------------------------------------
+--- RestoreLevelEntry: IMaude rule to restore a level entry in the file where the user 
+---                           wants to save a Maude-NPA session
+---------------------------------------------------------------
+  eq isReq('restoreLevelEntry) = true .
+  eq enabled(wait4s, req('restoreLevelEntry, ql(tname g2dvname  currentLevel restoredSessionFname toks), reqQ0))
+   = true .
+ 
+crl[restoreLevelEntry]:
+       [nil,
+     st(processing( req('restoreLevelEntry, ql(tname g2dvname  currentLevel restoredSessionFname toks),
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    =>  
+   [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es, log),
+        outQ ]
+    if  reqQ1 :=
+    	      req('restore,ql(restoredSessionFname 'level currentLevel tname 'entry ), reqQ0)
+. 
+
+
+---------------------------------------------------------------
+--- restoreNPATree: call the JLambda functions that create a new graph and updates it with
+---                     the states defined at the file in which the session was saved. Doing so with an 
+---			   IMaude request is necessary for syncronization of events
+---------------------------------------------------------------
+  eq isReq('restoreNPATree) = true .
+  eq enabled(wait4s, req('restoreNPATree, ql(g2dvname tname protocol restoredSessionFname toks),reqQ0))
+            = true .
+
+  crl[restoreNPATree]:
+    [nil,
+     st(processing(req('restoreNPATree, ql(g2dvname tname protocol restoredSessionFname toks),reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+    [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4(g2dvname,nil,
+              req('logreq, 
+                   ql('restoreNPATree g2dvname tname toks), 
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname '\n maudename '\n toks' maudePrompt ]
+    if  maudename :=  getMaudeName(es)
+     /\ tnotes  := getNotes(es,'tval,'searchTree tname)
+     /\ ql(aname) := lookupd(tnotes,"aname",ql('unknown))
+     /\ sv(lastLevel) := lookupd(tnotes,"lastLevel", sv("0"))
+     /\ ?string :=
+          withAck(restoreNPATreeExp(tname,protocol,restoredSessionFname,aname,qid(lastLevel)), maudename, g2dvname) 
+     /\  toks' := str2toks(?string)  .
+
+
+  op restoreNPATreeTemplate : -> String .
+  eq restoreNPATreeTemplate = "(apply restoreNPATree %tname %protocol %restoreFile %aname %lastLevel)" .
+
+  op restoreNPATreeExp : Qid  Qid Qid Qid Qid -> String .
+  eq restoreNPATreeExp(tname,protocol,restoredSessionFname,aname,nlevel) =
+    fillTemplate(restoreNPATreeTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%protocol" :~ squote(string(protocol))),
+           ("%restoreFile" :~ squote(string(restoredSessionFname))),
+           ("%aname" :~ squote(string(aname))),
+	   ("%lastLevel" :~ squote(string(nlevel)))
+ )) .
+
+
+---------------------------------------------------------------
+--- addLevelToTree: IMaude rule to get a level entry and send its information to the 
+---                           graphics2d to add a new level to the Maude-NPA tree
+---------------------------------------------------------------
+
+ eq isReq('addLevelToTree) = true .
+ eq enabled(wait4s,
+       req('addLevelToTree,ql(tname g2dvname currentLevel  toks),reqQ0))  
+            = true .
+
+crl[addLevelToTree]:
+    [nil,
+     st(processing(req('addLevelToTree,ql(tname g2dvname currentLevel toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4( g2dvname ,nil, --- g2dvname
+              req('logreq, 
+                   ql('addLevelToTree  tname g2dvname currentLevel toks'), 
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname  '\n maudename '\n toks' maudePrompt ]  
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(addLevelToTreeExp(es,tname,currentLevel), maudename,g2dvname) 
+    /\  toks' := str2toks(?string)
+.
+
+  op addLevelToTreeTemplate : -> String .
+  eq addLevelToTreeTemplate = 
+      "(apply extendNPATree %tname %level)" .
+
+  op addLevelToTreeExp : ESet Qid  Qid -> String .
+  ceq addLevelToTreeExp(es,tname,currentLevel) =
+    fillTemplate(addLevelToTreeTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%level" :~ squote(str))) )
+  if tm(modname,idSysST) := getVal(es,'tval,'level currentLevel tname,mtIdSysSTv)
+   /\ str := term2String([modname],idSysST)
+   .    
+
+---------------------------------------------------------------
+--- restoreSavedLevels: this requests adds a new level to the search tree iteratively
+---                                and redisplays the graph each time a new level is added.
+------------------------------------------------------------------
+
+ eq isReq('restoreSavedLevels) = true .
+  eq enabled(wait4s,
+       req('restoreSavedLevels,ql(tname g2dvname currentLevel nlevel  toks),reqQ0)) 
+            = true .
+
+
+crl[restoreSavedLevels]:
+    [nil,
+     st(processing(req('restoreSavedLevels,ql( tname g2dvname  currentLevel nlevel toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+ [nil,  
+    st(ready,
+       wait4s, 
+       (reqQ reqQ1), es, log),
+        outQ ]
+   if clevelsS := string(currentLevel)
+    /\ nlevelS := string(nlevel)
+    /\ nextlS := stringInc(clevelsS)
+    /\ nextLevelQid := qid(nextlS)
+    /\ reqQ1 := getReq(clevelsS, nlevelS,nextlS,reqQ0,g2dvname,tname,currentLevel,nlevel)
+. 
+
+
+op getReq : String String String RequestQ Qid Qid Qid Qid -> RequestQ .  
+eq getReq(clevelsS,nlevelS,nextlS,reqQ0,g2dvname,tname,currentLevel, nlevel) =  
+    		( if rat(clevelsS,10) + 1 < rat(nlevelS,10)   then  
+		      req('addLevelToTree,ql(tname g2dvname currentLevel),  
+			 req('redisplayNPATree,ql(g2dvname tname),  
+				   req('restoreSavedLevels, ql(tname g2dvname qid(nextlS) nlevel ), reqQ0)))
+		     else 
+		           req('addLevelToTree,ql(tname g2dvname currentLevel),  
+                             req('updateRestoringSessionAttr,ql(g2dvname tname 'false),
+			       req('redisplayNPATree,ql(g2dvname tname),
+			         req('updateMessageArea,ql(g2dvname tname 'yes 'Session 'was 'restored 'succesfully ), 
+			 	  req('showMessage,ql(g2dvname   'Finish 'Session 'was 'restored 'succesfully  '1 ),
+				    reqQ0))))   )
+	          fi )  .
+
+
+---------------------------------------------------------------
+--- showMessage: this requests can be used to show a message 
+---------------------------------------------------------------
+var title type : Qid .
+var stringTitle stringType : String .
+
+eq isReq('showMessage) = true .
+ eq enabled(wait4s,
+       req('showMessage,ql(g2dvname   title  textToks type  ),reqQ0))  
+            = true .
+
+crl[showMessage]:
+    [nil,
+     st(processing(req('showMessage,ql(g2dvname title textToks type ), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4( g2dvname ,nil, 
+              req('logreq, 
+                   ql('showMessage  g2dvname  title textToks type),  
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname  '\n maudename '\n toks' maudePrompt ]  
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(showMessageExp(  string(title), qidl2string(textToks),  type),
+                                                      maudename,g2dvname) 
+    /\  toks' := str2toks(?string) 
+.
+
+--- 'javax.swing.JOptionPane.INFORMATION_MESSAGE
+
+  op showMessageTemplate : -> String .
+  eq showMessageTemplate = 
+      "(apply  displayWInfoMessageS  %title %text %type )" .
+
+
+
+  op showMessageExp :  String  String Qid -> String .
+  eq showMessageExp(stringTitle, stringText, type) =
+    fillTemplate(showMessageTemplate,
+          (("%title" :~ squote(stringTitle)),
+           ("%text" :~ squote(stringText)),
+	   ("%type" :~  squote(string(type)))
+))    
+ .    
+
+
+
+---------------------------------------------------------------
+--- updateMessageArea: this requests can be used to update the text of the message area 
+---                                  of the window that shows the graphcial representation of the search tree  
+---------------------------------------------------------------
+
+eq isReq('updateMessageArea) = true .
+ eq enabled(wait4s,
+       req('updateMessageArea,ql(g2dvname tname wait? textToks),reqQ0))  
+            = true .
+
+
+
+crl[updateMessageArea]:
+    [nil,
+     st(processing(req('updateMessageArea,ql(g2dvname tname  wait?  textToks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4( g2dvname ,nil, 
+              req('logreq, 
+                   ql('updateMessageArea  g2dvname  tname  wait?  textToks),  
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname  '\n maudename '\n toks' maudePrompt ]  
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(updateMessageAreaExp(tname, qidl2string(textToks), wait?), maudename,g2dvname) 
+    /\  toks' := str2toks(?string)
+.
+
+  op updateMessageAreaTemplate : -> String .
+  eq updateMessageAreaTemplate = 
+      "(apply  setTextMessageArea  %tname %text %wait)" .
+
+ var stringText  : String .
+var wait? : Qid .
+
+
+  op updateMessageAreaExp :  Qid  String Qid -> String .
+  eq updateMessageAreaExp(tname,stringText,wait?) =
+    fillTemplate(updateMessageAreaTemplate,
+          (("%tname" :~ squote(string(tname))),
+           ("%text" :~ squote(stringText)),
+	   ("%wait"  :~ squote(string(wait?)))))
+ .
+
+---------------------------------------------------------------
+--- updateRestoringSessionAttr: this requests can be used to update the attribute isRestoringSession?
+---                                              of a graph  
+---------------------------------------------------------------
+
+ eq isReq('updateRestoringSessionAttr) = true .
+ eq enabled(wait4s,
+       req('updateRestoringSessionAttr, ql(g2dvname tname restoring? toks),reqQ0))  
+            = true .
+
+crl[updateRestoringSessionAtt]:
+    [nil,
+     st(processing(req('updateRestoringSessionAttr,ql(g2dvname tname  restoring? toks), 
+                       reqQ0)),
+        wait4s,reqQ,es,log),  outQ ]
+    => 
+   [nil,  
+    st(ready,
+       (wait4s ! 
+        wait4( g2dvname ,nil, 
+              req('logreq, 
+                   ql('updateRestoringSessionAttr  g2dvname  tname restoring? toks),  
+                   reqQ0))), 
+       reqQ, es, log),
+        outQ  g2dvname  '\n maudename '\n toks' maudePrompt ]  
+    if  maudename :=  getMaudeName(es)
+    /\ ?string :=
+          withAck(updateRestoringSessionAttrExp(tname, restoring?), maudename,g2dvname) 
+    /\  toks' := str2toks(?string)
+.
+
+  op updateRestoringSessionAttrTemplate : -> String .
+  eq updateRestoringSessionAttrTemplate = 
+      "(apply  updateRestoringSessionAttr  %tname %restoring?)" .
+
+
+var restoring? : Qid .
+
+
+  op updateRestoringSessionAttrExp :  Qid   Qid -> String .
+  eq updateRestoringSessionAttrExp (tname,restoring?) =
+    fillTemplate(updateRestoringSessionAttrTemplate,
+          (("%tname" :~ squote(string(tname))),
+	   ("%restoring?"  :~ squote(string(restoring?)))))
+ .    
+
+
+
+ **************************************************************************
+****  listener
+**************************************************************************
+
+vars reqid vname : Qid .
+vars OutQ : QidList .
+
+****  eq isReq('guireq) = true .
+  eq enabled(wait4s,req('guireq,ql(g2dvname vname reqid toks),reqQ)) = true .
+---      not(waiting4(wait4s,g2dvname)) and not(waiting4(wait4s,vname)) .
+
+rl[guireq]:
+   [nil,
+    st(processing(req('guireq, ql(g2dvname vname reqid toks),reqQ')), 
+       wait4s,reqQ,es,log), 
+    OutQ]
+     =>
+   [nil,  
+    st(ready,
+       (wait4s !
+**** resume listening for vname reqs
+        wait4(vname, nil, req('guireq,ql(g2dvname),nil))),  
+       (reqQ req(reqid, ql(vname g2dvname toks), reqQ')),
+       es,
+       log), OutQ  ] .
+
+
+ 
+
+
+var name : Qid .
+
+  eq isReq('startListener2) = true .
+  eq enabled(wait4s,req('startListener2,ql(name reqid toks),reqQ)) = 
+    ---    not(waiting4(wait4s,name)) .
+   true .
+
+  rl[startListener2]:
+   [nil,
+    st(processing(req('startListener2, ql(name reqid toks),reqQ')), 
+       wait4s,reqQ,es,log), 
+    outQ]
+     =>
+   [nil,  
+    st(ready,
+       (wait4s ! wait4(name,nil, req(reqid,ql(toks),nil))), 
+       (reqQ reqQ'),
+       es,
+       log), outQ ] .
+
+
+****  eq isReq('vendreq) = true .
+  eq enabled(wait4s,req('npareq,ql(g2dvname vname reqid toks),reqQ)) = 
+      not(waiting4(wait4s,g2dvname)) and not(waiting4(wait4s,vname)) .
+
+rl[npareq]:
+   [nil,
+    st(processing(req('npareq, ql(g2dvname vname reqid toks),reqQ')), 
+       wait4s,reqQ,es,log), 
+    outQ]
+     =>
+   [nil,  
+    st(ready,
+       (wait4s !
+**** resume listening for vname reqs
+        wait4(vname, nil, req('npareq,ql(g2dvname),nil))),  
+       (reqQ req(reqid, ql(vname g2dvname toks), reqQ')),
+       es,
+       log), outQ  ] .
+
+
+
+
+
+   endm
+
+
+

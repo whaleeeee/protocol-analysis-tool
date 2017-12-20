@@ -1,0 +1,61 @@
+(entry tval(qidlist grammar NSPK)(notes)(tval MAUDE-NPA(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg notInI, #0:Msg notLeq n(#1:Name,#2:Fresh)=>(#0:Msg ; #3:Msg)inL . ;
+grl #0:Msg notInI, #0:Msg notLeq n(#1:Name,#2:Fresh)=>(#3:Name ; #0:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg notInI, #0:Msg notLeq n(#1:Name,#2:Fresh)=>(#3:Msg ; #0:Msg)inL .)
+|(errorNoHeuristicApplied{
+grl empty =>(#1:Msg ; #2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .}usingGrammar
+grl empty =>(#1:Msg ; #2:Msg)inL .)
+|(errorInconsistentExceptionsInGrammarRule
+grl n(#0:Name,#1:Fresh)notLeq #1:Nonce => n(#0:Name,#1:Fresh)inL . inGrammar
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #5:Msg inL => pk(#3:Name,#5:Msg)inL . ;
+grl n(#0:Name,#1:Fresh)notLeq #1:Nonce => n(#0:Name,#1:Fresh)inL .)
+|(errorNoHeuristicApplied{
+grl #50:Key notInI => pk(#50:Key,#60:Msg)inL .,none,
+grl #50:Key notInI => #60:Msg inL .,none,
+grl #50:Key notInI => #60:Msg inL .}usingGrammar
+grl #50:Key notInI => pk(#50:Key,#60:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:Nonce), (#0:Msg notLeq #2:Name ; n(
+    #2:Name,#3:Fresh)), #0:Msg notLeq #4:Nonce ; n(#5:Name,#6:Fresh)=> pk(
+    #7:Key,#0:Msg)inL .)
+|(errorNoHeuristicApplied{
+grl empty => pk(#1:Key,#2:Msg)inL .,none,
+grl empty => #2:Msg inL .,none,
+grl empty => #2:Msg inL .}usingGrammar
+grl empty => pk(#1:Key,#2:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Key notInI => sk(#0:Key,#1:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:Msg notInI => sk(#1:Key,#0:Msg)inL .)
+|
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Key,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl sk(#0:Key,#1:Msg)notLeq sk(i,#2:Msg)=> sk(#0:Key,#1:Msg)inL .))

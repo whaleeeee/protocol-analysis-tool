@@ -1,0 +1,80 @@
+(entry tval(qidlist grammar XOR-NSL)(notes)(tval MAUDE-NPA(
+grl #0:Msg inL => pk(i,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:Name), (#0:Msg notLeq n(#2:Name,
+    #3:Fresh)), #0:Msg notLeq #4:NNSet * #5:NNSet => pk(#6:Name,n(#6:Name,
+    #7:Fresh); #0:Msg)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:Name), (#0:Msg notLeq n(#2:Name,
+    #3:Fresh)), #0:Msg notLeq #4:NNSet * #5:NNSet =>(n(#6:Name,#7:Fresh);
+    #0:Msg)inL . ;
+grl #0:NNSet notInI, (#0:NNSet notLeq #1:Name), (#0:NNSet notLeq n(#2:Name,
+    #3:Fresh)), #0:NNSet notLeq #4:NNSet * #5:NNSet =>(#0:NNSet * #6:NNSet)inL
+    . ;
+grl(#0:NNSet * #1:NNSet)notInI, (#0:NNSet notLeq #2:Name), (#0:NNSet notLeq n(
+    #3:Name,#4:Fresh)), (#0:NNSet * #1:NNSet)notLeq #5:NNSet * #6:NNSet =>
+    #0:NNSet inL .)
+|(errorNoHeuristicApplied{
+grl empty =>(#1:NNSet * #2:NNSet)inL .,none,
+grl empty =>(#1:NNSet,#2:NNSet)inL .,none,
+grl empty =>(#1:NNSet,#2:NNSet)inL .}usingGrammar
+grl empty =>(#1:NNSet * #2:NNSet)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl #0:Msg notInI, #0:Msg notLeq n(#1:Name,#2:Fresh)=>(#0:Msg ; #3:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl #0:Msg notInI, #0:Msg notLeq #1:Name * n(#1:Name,#2:Fresh)=>(#3:Msg ;
+    #0:Msg)inL .)
+|(errorNoHeuristicApplied{
+grl empty =>(#1:Msg ; #2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .,none,
+grl empty =>(#1:Msg,#2:Msg)inL .}usingGrammar
+grl empty =>(#1:Msg ; #2:Msg)inL .)
+|(errorInconsistentExceptionsInGrammarRule
+grl n(#0:Name,#1:Fresh)notLeq #1:NNSet => n(#0:Name,#1:Fresh)inL . inGrammar
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #4:Msg inL => pk(#3:Name,#4:Msg)inL . ;
+grl #16:NNSet inL => pk(#3:Name,n(#3:Name,#4:Fresh); i * #16:NNSet)inL . ;
+grl #0:Nonce inL =>(#1:NNSet * #0:Nonce)inL . ;
+grl n(#0:Name,#1:Fresh)notLeq #1:NNSet => n(#0:Name,#1:Fresh)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl #0:Msg notInI, (#0:Msg notLeq #1:NNSet), (#0:Msg notLeq #2:NNSet ; #3:Name
+    * n(#3:Name,#4:Fresh)), #0:Msg notLeq n(#5:Name,#6:Fresh); #5:Name => pk(
+    #7:Name,#0:Msg)inL .)
+|(errorNoHeuristicApplied{
+grl empty => pk(#1:Name,#2:Msg)inL .,none,
+grl empty => #2:Msg inL .,none,
+grl empty => #2:Msg inL .}usingGrammar
+grl empty => pk(#1:Name,#2:Msg)inL .)
+|(
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl #0:Msg notInI => sk(#1:Name,#0:Msg)inL .)
+|
+grl #0:Msg inL => pk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL => sk(#1:Name,#0:Msg)inL . ;
+grl #0:Msg inL =>(#0:Msg ; #1:Msg)inL . ;
+grl #0:Msg inL =>(#1:Msg ; #0:Msg)inL . ;
+grl #0:NNSet inL =>(#0:NNSet * #1:NNSet)inL . ;
+grl sk(#0:Name,#1:Msg)notLeq sk(i,#2:Msg)=> sk(#0:Name,#1:Msg)inL .))

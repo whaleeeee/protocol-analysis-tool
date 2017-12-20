@@ -1,0 +1,94 @@
+/*
+    A simple protocol that demonstrates Diffie-Helman public and secret key encryption
+    with keys generated using exponents, and the fact that 
+    g^(a * b) = (g^a)^b.
+*/
+spec DIFFIE-HELMAN is
+Theory
+  types Name Nonce NeNonceSet Gen Exp Key GenvExp Secret .
+  subtype Gen Exp < GenvExp .
+  subtype Exp < Key .
+  subtype Name < Public . // This is quite relevant and necessary
+  subtype Gen < Public . // This is quite relevant and necessary
+
+  op sec : Name Fresh -> Secret .
+
+  op n : Name Fresh -> Nonce .
+
+  ops a b i : -> Name .
+
+  op e : Key Msg -> Msg .
+  op d : Key Msg -> Msg .
+
+  op exp : GenvExp NeNonceSet -> Exp .
+
+  op g : -> Gen .
+
+  subtype Nonce < NeNonceSet .
+  op _*_ : NeNonceSet NeNonceSet -> NeNonceSet [assoc comm] .
+
+  op _;_ : Msg Msg -> Msg [gather (e E)] .
+
+  var W : Gen .
+  vars Y Z : NeNonceSet .
+  var K : Key .
+  var M : Msg .
+  eq exp(exp(W,Y),Z) = exp(W, Y * Z) .
+  eq e(K,d(K,M)) = M .
+  eq d(K,e(K,M)) = M .
+
+Protocol
+    vars ANAME BNAME ANAME1 : Name .
+    vars r r' r1 : Fresh .
+    vars XEA XEB : Exp .
+    var S : Secret .
+
+    roles A B .
+
+    In(A) = ANAME, BNAME .
+    In(B) = BNAME .
+
+    Def(A) = na := n(ANAME, r), secret := sec(ANAME, r') .
+    Def(B) = nb := n(BNAME, r1) .
+
+    1 . A -> B : ANAME  ; BNAME ; exp(g, na)      
+              |- ANAME1 ; BNAME ; XEB .
+    2 . B -> A : ANAME1 ; BNAME ; exp(g, nb)      
+              |- ANAME  ; BNAME ; XEA .
+    3 . A -> B : e(exp(XEA, na), secret)     
+              |- e(exp(XEB, nb), S) .
+
+    Out(A) = na, exp(g, na), XEB, secret .
+    Out(B) = nb, exp(g, nb), XEA, S .
+
+Intruder
+    vars NAME : Name .
+    var K : Key .
+    vars M M1 M2 : Msg .
+    vars NS1 NS2 : NeNonceSet .
+    var GE : GenvExp .
+    var r  : Fresh .
+             => n(i, r), g, NAME .
+    M1 ; M2 <=> M1, M2 .
+    K, M     => e(K, M), d(K, M) .
+    NS1, NS2 => NS1 * NS2 .
+    GE, NS1  => exp(GE, NS1) .
+
+Attacks
+    /*
+        Authentication attack meant to make sure the protocol is implemented
+        properly. If this "attack" does not find an initial state, then this
+        protocol was implemented incorrectly.
+    */
+    0 .
+        B executes protocol .
+        Subst(B) = ANAME1 |-> a, BNAME |-> b, S |-> sec(a, r') .
+        without:
+            Subst(A) = ANAME |-> a, BNAME |-> b .
+            A executes protocol .
+    1 .
+        B executes protocol .
+        Subst(B) = ANAME1 |-> a, BNAME |-> b, S |-> sec(a, r') .
+        Intruder learns sec(a, r') .
+
+ends

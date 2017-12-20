@@ -1,0 +1,1348 @@
+* Registered tools: ['ofmc', 'satmc', 'cl-atse', 'ta4sp', 'scyther', 'proverif', 'casperfdr']
+* Scanning main
+* {'eke': ['aA', 'aB', 'sAk', 'sBk'], 'avispa_tls': ['aA', 'aB', 'sAck', 'sAsk', 'sBck', 'sBsk'], 'fix_nspk': ['aA', 'aB', 'sAna', 'sAnb', 'sBna', 'sBnb'], 'nspk': ['aA', 'aB', 'sAna', 'sAnb', 'sBna', 'sBnb']}
+
+************************************************************
+* Testing performance for MaxProc(1) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jul  4 21:43:59 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.27s>	<1.63s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.30s>	<1.49s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.23s>	<1.43s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.30s>	<1.48s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.15s>	<1.06s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.18s>	<1.13s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.20s>	<0.92s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.26s>	<1.12s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.21s>	<0.92s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.22s>	<0.96s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.09s>	<0.70s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct?  casperfdr  Scen  ([R(E,A)])  {MaxProc1}	<0.10s>	<0.75s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(2) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jul  4 21:44:58 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<1.44s>	<3.90s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<2.06s>	<5.42s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<1.84s>	<4.96s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<2.08s>	<5.38s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  casperfdr  Scen  ([R(E,A),R(E,B)])  {MaxProc2}	<2.03s>	<7.53s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct?  casperfdr  Scen  ([R(E,A),R(E,B)])  {MaxProc2}	<1.68s>	<6.79s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  casperfdr  Scen  ([I(A,A),R(A,A)])  {MaxProc2}	<0.47s>	<1.43s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  casperfdr  Scen  ([I(A,A),R(A,A)])  {MaxProc2}	<0.65s>	<1.95s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<0.84s>	<2.51s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A)])  {MaxProc2}	<0.92s>	<2.91s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    correct?  casperfdr  Scen  ([R(E,A),R(E,B)])  {MaxProc2}	<0.92s>	<4.34s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  casperfdr  Scen  ([I(A,A),R(A,A)])  {MaxProc2}	<0.63s>	<2.57s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(3) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jul  4 21:47:03 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<6.91s>	<13.40s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<8.35s>	<15.85s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<7.91s>	<15.10s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<7.84s>	<14.97s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<31.43s>	<52.94s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<34.81s>	<58.92s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  casperfdr  Scen  ([I(A,A),I(A,A),R(A,A)])  {MaxProc3}	<1.11s>	<2.60s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  casperfdr  Scen  ([I(A,A),I(A,A),R(A,A)])  {MaxProc3}	<1.62s>	<3.68s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<2.92s>	<6.53s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<3.41s>	<7.67s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<24.57s>	<36.84s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  casperfdr  Scen  ([I(A,A),I(A,A),R(A,A)])  {MaxProc3}	<14.74s>	<18.47s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(4) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jul  4 21:53:15 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<55.39s>	<69.03s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<59.21s>	<74.42s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<55.56s>	<69.66s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<56.12s>	<71.23s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    timeout!  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1199.99s>	<1257.33s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    timeout!  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  casperfdr  Scen  ([I(A,A),I(A,A),I(A,A),R(A,A)])  {MaxProc4}	<5.22s>	<8.25s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  casperfdr  Scen  ([I(A,A),I(A,A),I(A,A),R(A,A)])  {MaxProc4}	<5.61s>	<8.81s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<18.88s>	<24.95s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  casperfdr  Scen  ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<21.33s>	<29.20s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    timeout!  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1199.99s>	<1229.30s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    timeout!  casperfdr  Scen  ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(5) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jul  4 23:24:11 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+* Registered tools: ['ofmc', 'satmc', 'cl-atse', 'ta4sp', 'scyther', 'proverif', 'casperfdr']
+* Scanning main
+* {'eke': ['aA', 'aB', 'sAk', 'sBk'], 'avispa_tls': ['aA', 'aB', 'sAck', 'sAsk', 'sBck', 'sBsk'], 'fix_nspk': ['aA', 'aB', 'sAna', 'sAnb', 'sBna', 'sBnb'], 'nspk': ['aA', 'aB', 'sAna', 'sAnb', 'sBna', 'sBnb']}
+
+************************************************************
+* Testing performance for MaxProc(1) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Thu Jun 26 12:06:25 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther  MaxProc  (1)  {MaxProc1}	<0.02s>	<0.07s>	<0KB>
+eke         sBk   correct?  scyther  Traces   ()   {MaxProc1}	<3.24s>	<5.20s>	<0KB>
+eke         sBk   correct?  ofmc     Scen     ([R(E,A)])  {MaxProc1}	<0.02s>	<0.44s>	<0KB>
+eke         sBk   correct?  satmc    Scen     ([R(E,A)])  {MaxProc1}	<0.42s>	<4.96s>	<0KB>
+eke         sBk   correct?  cl-atse  Scen     ([R(E,A)])  {MaxProc1}	<0.03s>	<0.59s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()          {MaxProc1}	<0.12s>	<0.24s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.03s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()          {MaxProc1}	<0.08s>	<0.27s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.63s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<0.44s>	<8.11s>	<0KB>
+eke         sAk   correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.02s>	<0.84s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()          {MaxProc1}	<0.07s>	<0.22s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0.04s>	<0.07s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()          {MaxProc1}	<0.02s>	<0.05s>	<0KB>
+eke         aB    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.92s>	<0KB>
+eke         aB    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<0.48s>	<11.30s>	<0KB>
+eke         aB    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<1.23s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()          {MaxProc1}	<1.92s>	<6.78s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.03s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()          {MaxProc1}	<0.04s>	<0.10s>	<0KB>
+eke         aA    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.90s>	<0KB>
+eke         aA    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<0.87s>	<12.05s>	<0KB>
+eke         aA    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.07s>	<1.27s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()          {MaxProc1}	<1.74s>	<6.25s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.02s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()          {MaxProc1}	<0.04s>	<0.13s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.06s>	<0.58s>	<0KB>
+avispa_tls  sBsk  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<41.92s>	<154.59s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.84s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()          {MaxProc1}	<0.02s>	<0.09s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.03s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()          {MaxProc1}	<0.03s>	<0.13s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.68s>	<0KB>
+avispa_tls  sBck  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<41.28s>	<153.40s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.80s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()          {MaxProc1}	<0.02s>	<0.08s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0.01s>	<0.03s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()          {MaxProc1}	<0.03s>	<0.15s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.07s>	<0.62s>	<0KB>
+avispa_tls  sAsk  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<39.50s>	<146.17s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.84s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()          {MaxProc1}	<0.01s>	<0.11s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0.02s>	<0.07s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()          {MaxProc1}	<0.04s>	<0.18s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.05s>	<0.73s>	<0KB>
+avispa_tls  sAck  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<39.20s>	<134.19s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.06s>	<0.77s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()          {MaxProc1}	<0.02s>	<0.06s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.02s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()          {MaxProc1}	<0.02s>	<0.05s>	<0KB>
+avispa_tls  aB    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.13s>	<0.84s>	<0KB>
+avispa_tls  aB    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<59.87s>	<160.61s>	<0KB>
+avispa_tls  aB    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.11s>	<1.08s>	<0KB>
+*** Claim: avispa_tls,aA ***
+avispa_tls  aA    attack_!  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    attack_!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.12s>	<0.75s>	<0KB>
+avispa_tls  aA    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<58.06s>	<156.43s>	<0KB>
+avispa_tls  aA    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.14s>	<1.14s>	<0KB>
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.04s>	<0KB>
+fix_nspk    sBnb  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.06s>	<0KB>
+fix_nspk    sBnb  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.10s>	<0.55s>	<0KB>
+fix_nspk    sBnb  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.07s>	<7.45s>	<0KB>
+fix_nspk    sBnb  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.09s>	<0.85s>	<0KB>
+fix_nspk    sBnb  correct!  proverif  Traces   ()          {MaxProc1}	<0s>	<0s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.06s>	<0KB>
+fix_nspk    sBna  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.01s>	<0KB>
+fix_nspk    sBna  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.09s>	<0.53s>	<0KB>
+fix_nspk    sBna  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.08s>	<7.51s>	<0KB>
+fix_nspk    sBna  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.85s>	<0KB>
+fix_nspk    sBna  correct!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.08s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.06s>	<0KB>
+fix_nspk    sAnb  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.10s>	<0KB>
+fix_nspk    sAnb  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.10s>	<0.55s>	<0KB>
+fix_nspk    sAnb  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.27s>	<8.26s>	<0KB>
+fix_nspk    sAnb  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.82s>	<0KB>
+fix_nspk    sAnb  correct!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.07s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.01s>	<0KB>
+fix_nspk    sAna  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.05s>	<0KB>
+fix_nspk    sAna  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.10s>	<0.55s>	<0KB>
+fix_nspk    sAna  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.34s>	<8.43s>	<0KB>
+fix_nspk    sAna  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.09s>	<0.77s>	<0KB>
+fix_nspk    sAna  correct!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.01s>	<0KB>
+fix_nspk    aB    correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.03s>	<0KB>
+fix_nspk    aB    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.16s>	<0.91s>	<0KB>
+fix_nspk    aB    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.66s>	<10.73s>	<0KB>
+fix_nspk    aB    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.15s>	<1.14s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.02s>	<0KB>
+fix_nspk    aA    correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.06s>	<0KB>
+fix_nspk    aA    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.13s>	<0.80s>	<0KB>
+fix_nspk    aA    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.58s>	<11.57s>	<0KB>
+fix_nspk    aA    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.13s>	<1.19s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.08s>	<0KB>
+nspk        sBnb  attack_!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.03s>	<0KB>
+nspk        sBnb  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.12s>	<0.61s>	<0KB>
+nspk        sBnb  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.10s>	<7.44s>	<0KB>
+nspk        sBnb  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.09s>	<0.74s>	<0KB>
+nspk        sBnb  attack_!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.09s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.08s>	<0KB>
+nspk        sBna  attack_!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.06s>	<0KB>
+nspk        sBna  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.10s>	<0.52s>	<0KB>
+nspk        sBna  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.12s>	<7.47s>	<0KB>
+nspk        sBna  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.07s>	<0.82s>	<0KB>
+nspk        sBna  attack_!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.08s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.07s>	<0KB>
+nspk        sAnb  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.08s>	<0KB>
+nspk        sAnb  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.10s>	<0.54s>	<0KB>
+nspk        sAnb  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.25s>	<8.06s>	<0KB>
+nspk        sAnb  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.74s>	<0KB>
+nspk        sAnb  attack_!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.03s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.06s>	<0KB>
+nspk        sAna  correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.08s>	<0KB>
+nspk        sAna  correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.09s>	<0.54s>	<0KB>
+nspk        sAna  correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.26s>	<7.98s>	<0KB>
+nspk        sAna  correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.08s>	<0.83s>	<0KB>
+nspk        sAna  correct!  proverif  Traces   ()          {MaxProc1}	<0s>	<0.06s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.02s>	<0KB>
+nspk        aB    attack_!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.03s>	<0KB>
+nspk        aB    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.15s>	<0.86s>	<0KB>
+nspk        aB    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.67s>	<11.48s>	<0KB>
+nspk        aB    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.14s>	<1.09s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct?  scyther   MaxProc  (1)         {MaxProc1}	<0s>	<0.07s>	<0KB>
+nspk        aA    correct!  scyther   Traces   ()          {MaxProc1}	<0s>	<0.07s>	<0KB>
+nspk        aA    correct?  ofmc      Scen     ([R(E,A)])  {MaxProc1}	<0.15s>	<0.92s>	<0KB>
+nspk        aA    correct?  satmc     Scen     ([R(E,A)])  {MaxProc1}	<1.63s>	<11.20s>	<0KB>
+nspk        aA    correct?  cl-atse   Scen     ([R(E,A)])  {MaxProc1}	<0.16s>	<1.23s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(2) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Thu Jun 26 12:27:51 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther   MaxProc  (2)         {MaxProc2}	<0.13s>	<0.40s>	<0KB>
+eke         sBk   correct?  scyther   Traces   ()          {MaxProc2}	<4.31s>	<11.03s>	<0KB>
+eke         sBk   correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.28s>	<1.53s>	<0KB>
+eke         sBk   correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<3.29s>	<21.00s>	<0KB>
+eke         sBk   correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.24s>	<1.91s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()                 {MaxProc2}	<0.16s>	<0.52s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (2)                {MaxProc2}	<0.02s>	<0.06s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()                 {MaxProc2}	<0.11s>	<0.30s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.29s>	<1.46s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<3.24s>	<20.75s>	<0KB>
+eke         sAk   correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.23s>	<1.90s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()                 {MaxProc2}	<0.16s>	<0.48s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0.04s>	<0.07s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()                 {MaxProc2}	<0.04s>	<0.12s>	<0KB>
+eke         aB    attack_!  ofmc      Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<0.48s>	<2.59s>	<0KB>
+eke         aB    attack_!  satmc     Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<6.32s>	<39.38s>	<0KB>
+eke         aB    attack_!  cl-atse   Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<0.44s>	<3.57s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()                 {MaxProc2}	<2.51s>	<6.49s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0.01s>	<0.07s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()                 {MaxProc2}	<0.06s>	<0.12s>	<0KB>
+eke         aA    attack_!  ofmc      Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<0.47s>	<2.49s>	<0KB>
+eke         aA    attack_!  satmc     Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<6.07s>	<39.61s>	<0KB>
+eke         aA    attack_!  cl-atse   Scen     ([I(A,B),R(B,A)])  {MaxProc2}	<0.50s>	<3.57s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()                 {MaxProc2}	<2.26s>	<5.78s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct!  scyther   MaxProc  (2)                {MaxProc2}	<0.06s>	<0.19s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()                 {MaxProc2}	<0.06s>	<0.14s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.45s>	<1.74s>	<0KB>
+avispa_tls  sBsk  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<244.48s>	<636.05s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.31s>	<2.00s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()                 {MaxProc2}	<0.02s>	<0.13s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct!  scyther   MaxProc  (2)                {MaxProc2}	<0.04s>	<0.12s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()                 {MaxProc2}	<0.04s>	<0.12s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.46s>	<1.71s>	<0KB>
+avispa_tls  sBck  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<243.18s>	<637.60s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.36s>	<2.00s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()                 {MaxProc2}	<0.03s>	<0.09s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct!  scyther   MaxProc  (2)                {MaxProc2}	<0.06s>	<0.17s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()                 {MaxProc2}	<0.06s>	<0.15s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.46s>	<1.65s>	<0KB>
+avispa_tls  sAsk  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<227.93s>	<597.51s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.31s>	<2.10s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()                 {MaxProc2}	<0.03s>	<0.09s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct!  scyther   MaxProc  (2)                {MaxProc2}	<0.07s>	<0.16s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()                 {MaxProc2}	<0.07s>	<0.15s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.47s>	<1.74s>	<0KB>
+avispa_tls  sAck  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<198.65s>	<521.91s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.22s>	<1.92s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()                 {MaxProc2}	<0.02s>	<0.12s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct!  scyther   MaxProc  (2)                {MaxProc2}	<0.02s>	<0.03s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()                 {MaxProc2}	<0.02s>	<0.06s>	<0KB>
+avispa_tls  aB    correct?  ofmc      Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<0.92s>	<5.66s>	<0KB>
+avispa_tls  aB    correct?  satmc     Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<697.74s>	<1541.68s>	<0KB>
+avispa_tls  aB    correct?  cl-atse   Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.24s>	<7.19s>	<0KB>
+*** Claim: avispa_tls,aA ***
+avispa_tls  aA    attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.03s>	<0KB>
+avispa_tls  aA    attack_!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    attack_!  ofmc      Scen     ([I(A,A),I(A,E)])  {MaxProc2}	<0.11s>	<0.44s>	<0KB>
+avispa_tls  aA    attack_!  satmc     Scen     ([I(A,A),I(A,E)])  {MaxProc2}	<1.95s>	<7.12s>	<0KB>
+avispa_tls  aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,E)])  {MaxProc2}	<0.07s>	<0.63s>	<0KB>
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.07s>	<0KB>
+fix_nspk    sBnb  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBnb  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.25s>	<1.37s>	<0KB>
+fix_nspk    sBnb  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<2.16s>	<15.56s>	<0KB>
+fix_nspk    sBnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.19s>	<1.69s>	<0KB>
+fix_nspk    sBnb  correct!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+fix_nspk    sBna  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBna  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.25s>	<1.27s>	<0KB>
+fix_nspk    sBna  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<2.02s>	<13.99s>	<0KB>
+fix_nspk    sBna  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.28s>	<1.59s>	<0KB>
+fix_nspk    sBna  correct!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+fix_nspk    sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.28s>	<1.33s>	<0KB>
+fix_nspk    sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<2.99s>	<16.60s>	<0KB>
+fix_nspk    sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.26s>	<1.66s>	<0KB>
+fix_nspk    sAnb  correct!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.04s>	<0KB>
+fix_nspk    sAna  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.01s>	<0KB>
+fix_nspk    sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.29s>	<1.42s>	<0KB>
+fix_nspk    sAna  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<1.69s>	<15.44s>	<0KB>
+fix_nspk    sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.24s>	<1.60s>	<0KB>
+fix_nspk    sAna  correct!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+fix_nspk    aB    correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0s>	<0KB>
+fix_nspk    aB    correct?  ofmc      Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.15s>	<5.09s>	<0KB>
+fix_nspk    aB    correct?  satmc     Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<6.54s>	<63.54s>	<0KB>
+fix_nspk    aB    correct?  cl-atse   Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.04s>	<6.77s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+fix_nspk    aA    correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.01s>	<0KB>
+fix_nspk    aA    correct?  ofmc      Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.81s>	<6.53s>	<0KB>
+fix_nspk    aA    correct?  satmc     Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<14.70s>	<86.01s>	<0KB>
+fix_nspk    aA    correct?  cl-atse   Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.70s>	<7.47s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.03s>	<0KB>
+nspk        sBnb  attack_!  scyther   Traces   ()                 {MaxProc2}	<0.01s>	<0.03s>	<0KB>
+nspk        sBnb  attack_!  ofmc      Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.24s>	<1.01s>	<0KB>
+nspk        sBnb  attack_!  satmc     Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<2.34s>	<12.36s>	<0KB>
+nspk        sBnb  attack_!  cl-atse   Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.25s>	<1.06s>	<0KB>
+nspk        sBnb  attack_!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.08s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+nspk        sBna  attack_!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.03s>	<0KB>
+nspk        sBna  attack_!  ofmc      Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.25s>	<0.96s>	<0KB>
+nspk        sBna  attack_!  satmc     Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<2.36s>	<12.07s>	<0KB>
+nspk        sBna  attack_!  cl-atse   Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.18s>	<1.16s>	<0KB>
+nspk        sBna  attack_!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.03s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+nspk        sAnb  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+nspk        sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.44s>	<1.63s>	<0KB>
+nspk        sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<4.89s>	<26.19s>	<0KB>
+nspk        sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.33s>	<1.59s>	<0KB>
+nspk        sAnb  attack_!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.06s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.01s>	<0KB>
+nspk        sAna  correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.04s>	<0KB>
+nspk        sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.39s>	<1.67s>	<0KB>
+nspk        sAna  correct?  satmc     Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<4.91s>	<21.88s>	<0KB>
+nspk        sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A)])  {MaxProc2}	<0.38s>	<1.89s>	<0KB>
+nspk        sAna  correct!  proverif  Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.01s>	<0KB>
+nspk        aB    attack_!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.03s>	<0KB>
+nspk        aB    attack_!  ofmc      Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.96s>	<3.90s>	<0KB>
+nspk        aB    attack_!  satmc     Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<8.69s>	<51.31s>	<0KB>
+nspk        aB    attack_!  cl-atse   Scen     ([I(A,E),R(A,A)])  {MaxProc2}	<0.89s>	<4.42s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct?  scyther   MaxProc  (2)                {MaxProc2}	<0s>	<0.02s>	<0KB>
+nspk        aA    correct!  scyther   Traces   ()                 {MaxProc2}	<0s>	<0.02s>	<0KB>
+nspk        aA    correct?  ofmc      Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.71s>	<6.28s>	<0KB>
+nspk        aA    correct?  satmc     Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<14.52s>	<72.15s>	<0KB>
+nspk        aA    correct?  cl-atse   Scen     ([R(E,A),R(E,B)])  {MaxProc2}	<1.53s>	<7.62s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(3) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Thu Jun 26 13:54:37 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther   MaxProc  (3)                {MaxProc3}	<0.36s>	<1.27s>	<0KB>
+eke         sBk   correct?  scyther   Traces   ()                 {MaxProc3}	<4.36s>	<12.69s>	<0KB>
+eke         sBk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.29s>	<4.78s>	<0KB>
+eke         sBk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<8.14s>	<40.94s>	<0KB>
+eke         sBk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.91s>	<3.64s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()                        {MaxProc3}	<0.17s>	<0.59s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (3)                       {MaxProc3}	<0.04s>	<0.06s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()                        {MaxProc3}	<0.11s>	<0.32s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.35s>	<4.44s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<8.28s>	<40.11s>	<0KB>
+eke         sAk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.87s>	<3.90s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()                        {MaxProc3}	<0.16s>	<0.44s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0.04s>	<0.06s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()                        {MaxProc3}	<0.04s>	<0.06s>	<0KB>
+eke         aB    attack_!  ofmc      Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<0.82s>	<3.20s>	<0KB>
+eke         aB    attack_!  satmc     Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<8.68s>	<40.01s>	<0KB>
+eke         aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<0.81s>	<3.32s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()                        {MaxProc3}	<2.64s>	<6.51s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0.02s>	<0.04s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()                        {MaxProc3}	<0.06s>	<0.11s>	<0KB>
+eke         aA    attack_!  ofmc      Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<0.89s>	<2.63s>	<0KB>
+eke         aA    attack_!  satmc     Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<8.55s>	<41.05s>	<0KB>
+eke         aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,B),R(B,A)])  {MaxProc3}	<0.85s>	<3.43s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()                        {MaxProc3}	<2.36s>	<6.80s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0.05s>	<0.15s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()                        {MaxProc3}	<0.05s>	<0.13s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.98s>	<5.91s>	<0KB>
+avispa_tls  sBsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1199.69s>	<3193.35s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.83s>	<5.28s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()                        {MaxProc3}	<0.03s>	<0.13s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0.04s>	<0.18s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()                        {MaxProc3}	<0.04s>	<0.14s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.77s>	<7.65s>	<0KB>
+avispa_tls  sBck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1199.69s>	<2592.37s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.84s>	<5.07s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()                        {MaxProc3}	<0.03s>	<0.15s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0.06s>	<0.23s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()                        {MaxProc3}	<0.06s>	<0.21s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.86s>	<7.53s>	<0KB>
+avispa_tls  sAsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1199.69s>	<3383.93s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.81s>	<5.23s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()                        {MaxProc3}	<0.03s>	<0.12s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0.07s>	<0.32s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()                        {MaxProc3}	<0.07s>	<0.26s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1.76s>	<7.42s>	<0KB>
+avispa_tls  sAck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<1199.69s>	<2594.68s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.80s>	<5.39s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()                        {MaxProc3}	<0.03s>	<0.20s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0.02s>	<0.07s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()                        {MaxProc3}	<0.02s>	<0.09s>	<0KB>
+avispa_tls  aB    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<13.44s>	<59.95s>	<0KB>
+avispa_tls  aB    timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<1199.69s>	<3432.67s>	<0KB>
+avispa_tls  aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<7.99s>	<49.04s>	<0KB>
+*** Claim: avispa_tls,aA ***
+avispa_tls  aA    attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.04s>	<0KB>
+avispa_tls  aA    attack_!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,E)])  {MaxProc3}	<0.16s>	<0.76s>	<0KB>
+avispa_tls  aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,E)])  {MaxProc3}	<3.42s>	<15.34s>	<0KB>
+avispa_tls  aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,E)])  {MaxProc3}	<0.12s>	<0.74s>	<0KB>
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.04s>	<0KB>
+fix_nspk    sBnb  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.05s>	<0KB>
+fix_nspk    sBnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.85s>	<4.15s>	<0KB>
+fix_nspk    sBnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<6.78s>	<56.43s>	<0KB>
+fix_nspk    sBnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.49s>	<4.54s>	<0KB>
+fix_nspk    sBnb  correct!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.09s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct?  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.04s>	<0KB>
+fix_nspk    sBna  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.02s>	<0KB>
+fix_nspk    sBna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.84s>	<4.21s>	<0KB>
+fix_nspk    sBna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<7.01s>	<57.83s>	<0KB>
+fix_nspk    sBna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.42s>	<4.77s>	<0KB>
+fix_nspk    sBna  correct!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.03s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.80s>	<4.30s>	<0KB>
+fix_nspk    sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<8.35s>	<67.14s>	<0KB>
+fix_nspk    sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.38s>	<4.68s>	<0KB>
+fix_nspk    sAnb  correct!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.09s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.04s>	<0KB>
+fix_nspk    sAna  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.04s>	<0KB>
+fix_nspk    sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.82s>	<4.14s>	<0KB>
+fix_nspk    sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<8.26s>	<66.12s>	<0KB>
+fix_nspk    sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.43s>	<4.62s>	<0KB>
+fix_nspk    sAna  correct!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.02s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct?  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.03s>	<0KB>
+fix_nspk    aB    correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.03s>	<0KB>
+fix_nspk    aB    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<7.21s>	<37.38s>	<0KB>
+fix_nspk    aB    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<52.61s>	<490.37s>	<0KB>
+fix_nspk    aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<4.22s>	<42.57s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.01s>	<0KB>
+fix_nspk    aA    correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.05s>	<0KB>
+fix_nspk    aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<7.21s>	<37.06s>	<0KB>
+fix_nspk    aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<53.77s>	<501.02s>	<0KB>
+fix_nspk    aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<4.21s>	<42.59s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.03s>	<0KB>
+nspk        sBnb  attack_!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.04s>	<0KB>
+nspk        sBnb  attack_!  ofmc      Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.22s>	<1.18s>	<0KB>
+nspk        sBnb  attack_!  satmc     Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<2.17s>	<16.19s>	<0KB>
+nspk        sBnb  attack_!  cl-atse   Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.13s>	<1.43s>	<0KB>
+nspk        sBnb  attack_!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.04s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.08s>	<0KB>
+nspk        sBna  attack_!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.05s>	<0KB>
+nspk        sBna  attack_!  ofmc      Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.21s>	<1.13s>	<0KB>
+nspk        sBna  attack_!  satmc     Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<2.14s>	<16.59s>	<0KB>
+nspk        sBna  attack_!  cl-atse   Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.14s>	<1.31s>	<0KB>
+nspk        sBna  attack_!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.03s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.05s>	<0KB>
+nspk        sAnb  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.06s>	<0KB>
+nspk        sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.84s>	<4.43s>	<0KB>
+nspk        sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<9.31s>	<71.10s>	<0KB>
+nspk        sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.45s>	<4.62s>	<0KB>
+nspk        sAnb  attack_!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.05s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.03s>	<0KB>
+nspk        sAna  correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.08s>	<0KB>
+nspk        sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.82s>	<4.24s>	<0KB>
+nspk        sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<9.14s>	<71.98s>	<0KB>
+nspk        sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A)])  {MaxProc3}	<0.42s>	<4.52s>	<0KB>
+nspk        sAna  correct!  proverif  Traces   ()                        {MaxProc3}	<0s>	<0.09s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.07s>	<0KB>
+nspk        aB    attack_!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.03s>	<0KB>
+nspk        aB    attack_!  ofmc      Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.96s>	<5.09s>	<0KB>
+nspk        aB    attack_!  satmc     Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<7.89s>	<73.46s>	<0KB>
+nspk        aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,E),R(A,A)])  {MaxProc3}	<0.61s>	<6.74s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct!  scyther   MaxProc  (3)                       {MaxProc3}	<0s>	<0.04s>	<0KB>
+nspk        aA    correct!  scyther   Traces   ()                        {MaxProc3}	<0s>	<0.09s>	<0KB>
+nspk        aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<7.17s>	<37.21s>	<0KB>
+nspk        aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<27.80s>	<385.91s>	<0KB>
+nspk        aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B)])  {MaxProc3}	<2.35s>	<39.71s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(4) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Thu Jun 26 19:25:03 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther   MaxProc  (4)                       {MaxProc4}	<0.72s>	<2.56s>	<0KB>
+eke         sBk   correct?  scyther   Traces   ()                        {MaxProc4}	<3.22s>	<10.87s>	<0KB>
+eke         sBk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<4.62s>	<18.88s>	<0KB>
+eke         sBk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.65s>	<80.95s>	<0KB>
+eke         sBk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.69s>	<7.75s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()                               {MaxProc4}	<0.08s>	<0.36s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (4)                              {MaxProc4}	<0.04s>	<0.12s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()                               {MaxProc4}	<0.06s>	<0.18s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<5.84s>	<23.19s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.06s>	<78.67s>	<0KB>
+eke         sAk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.75s>	<7.93s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()                               {MaxProc4}	<0.11s>	<0.49s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0.03s>	<0.06s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()                               {MaxProc4}	<0.02s>	<0.06s>	<0KB>
+eke         aB    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<0.54s>	<3.67s>	<0KB>
+eke         aB    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<5.05s>	<46.07s>	<0KB>
+eke         aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<0.34s>	<4.35s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()                               {MaxProc4}	<1.85s>	<6.28s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0.03s>	<0.08s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()                               {MaxProc4}	<0.05s>	<0.14s>	<0KB>
+eke         aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<0.54s>	<3.40s>	<0KB>
+eke         aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<4.98s>	<43.95s>	<0KB>
+eke         aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc4}	<0.31s>	<4.15s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()                               {MaxProc4}	<1.70s>	<5.73s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0.04s>	<0.12s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()                               {MaxProc4}	<0.04s>	<0.15s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.47s>	<32.17s>	<0KB>
+avispa_tls  sBsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1199.77s>	<1213.07s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1.59s>	<10.28s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()                               {MaxProc4}	<0.02s>	<0.11s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0.04s>	<0.14s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()                               {MaxProc4}	<0.03s>	<0.14s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<7.50s>	<28.80s>	<0KB>
+avispa_tls  sBck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1199.77s>	<1214.03s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1.61s>	<10.41s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()                               {MaxProc4}	<0.02s>	<0.14s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0.04s>	<0.09s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()                               {MaxProc4}	<0.04s>	<0.18s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.34s>	<31.49s>	<0KB>
+avispa_tls  sAsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1199.77s>	<1214.55s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1.19s>	<8.44s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()                               {MaxProc4}	<0.02s>	<0.12s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0.05s>	<0.16s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()                               {MaxProc4}	<0.05s>	<0.20s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.54s>	<31.46s>	<0KB>
+avispa_tls  sAck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1199.77s>	<1214.04s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1.21s>	<9.03s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()                               {MaxProc4}	<0.01s>	<0.08s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0.01s>	<0.06s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()                               {MaxProc4}	<0.01s>	<0.05s>	<0KB>
+avispa_tls  aB    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<107.96s>	<431.13s>	<0KB>
+avispa_tls  aB    timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1199.77s>	<1373.03s>	<0KB>
+avispa_tls  aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<44.47s>	<237.70s>	<0KB>
+*** Claim: avispa_tls,aA ***
+avispa_tls  aA    attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    attack_!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0s>	<0KB>
+avispa_tls  aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc4}	<0.22s>	<0.97s>	<0KB>
+avispa_tls  aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc4}	<5.30s>	<20.99s>	<0KB>
+avispa_tls  aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc4}	<0.17s>	<0.96s>	<0KB>
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.07s>	<0KB>
+fix_nspk    sBnb  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<3.83s>	<15.17s>	<0KB>
+fix_nspk    sBnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<11.28s>	<91.51s>	<0KB>
+fix_nspk    sBnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.28s>	<7.49s>	<0KB>
+fix_nspk    sBnb  correct!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.06s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.07s>	<0KB>
+fix_nspk    sBna  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.06s>	<0KB>
+fix_nspk    sBna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<2.40s>	<11.19s>	<0KB>
+fix_nspk    sBna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<8.08s>	<83.73s>	<0KB>
+fix_nspk    sBna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.54s>	<7.71s>	<0KB>
+fix_nspk    sBna  correct!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<2.08s>	<10.24s>	<0KB>
+fix_nspk    sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<10.51s>	<98.78s>	<0KB>
+fix_nspk    sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.49s>	<7.79s>	<0KB>
+fix_nspk    sAnb  correct!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.09s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.06s>	<0KB>
+fix_nspk    sAna  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+fix_nspk    sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1.97s>	<9.86s>	<0KB>
+fix_nspk    sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<10.43s>	<97.27s>	<0KB>
+fix_nspk    sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.49s>	<7.62s>	<0KB>
+fix_nspk    sAna  correct!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.08s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.07s>	<0KB>
+fix_nspk    aB    correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.04s>	<0KB>
+fix_nspk    aB    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<34.40s>	<179.03s>	<0KB>
+fix_nspk    aB    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<141.32s>	<1539.20s>	<0KB>
+fix_nspk    aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<10.14s>	<152.95s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.08s>	<0KB>
+fix_nspk    aA    correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+fix_nspk    aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<33.60s>	<175.66s>	<0KB>
+fix_nspk    aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<145.33s>	<1578.44s>	<0KB>
+fix_nspk    aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<9.90s>	<151.69s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.06s>	<0KB>
+nspk        sBnb  attack_!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+nspk        sBnb  attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.20s>	<1.11s>	<0KB>
+nspk        sBnb  attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<1.53s>	<13.90s>	<0KB>
+nspk        sBnb  attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.08s>	<1.28s>	<0KB>
+nspk        sBnb  attack_!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.08s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.06s>	<0KB>
+nspk        sBna  attack_!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+nspk        sBna  attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.18s>	<1.20s>	<0KB>
+nspk        sBna  attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<1.53s>	<14.46s>	<0KB>
+nspk        sBna  attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.06s>	<1.30s>	<0KB>
+nspk        sBna  attack_!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.03s>	<0KB>
+nspk        sAnb  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+nspk        sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<2.33s>	<10.79s>	<0KB>
+nspk        sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<14.04s>	<114.48s>	<0KB>
+nspk        sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.46s>	<7.54s>	<0KB>
+nspk        sAnb  attack_!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.08s>	<0KB>
+nspk        sAna  correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.07s>	<0KB>
+nspk        sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<2.69s>	<12.81s>	<0KB>
+nspk        sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<12.87s>	<110.64s>	<0KB>
+nspk        sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<0.49s>	<7.77s>	<0KB>
+nspk        sAna  correct!  proverif  Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.04s>	<0KB>
+nspk        aB    attack_!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+nspk        aB    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.76s>	<4.84s>	<0KB>
+nspk        aB    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<4.81s>	<57.31s>	<0KB>
+nspk        aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc4}	<0.39s>	<6.26s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct!  scyther   MaxProc  (4)                              {MaxProc4}	<0s>	<0.03s>	<0KB>
+nspk        aA    correct!  scyther   Traces   ()                               {MaxProc4}	<0s>	<0.03s>	<0KB>
+nspk        aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<36.47s>	<187.72s>	<0KB>
+nspk        aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<153.14s>	<1625.32s>	<0KB>
+nspk        aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<9.69s>	<152.23s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(5) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jun 27 01:09:13 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther   MaxProc  (5)                              {MaxProc5}	<1.32s>	<4.60s>	<0KB>
+eke         sBk   correct?  scyther   Traces   ()                               {MaxProc5}	<3.20s>	<10.58s>	<0KB>
+eke         sBk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<61.15s>	<211.78s>	<0KB>
+eke         sBk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<14.18s>	<132.50s>	<0KB>
+eke         sBk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<8.68s>	<37.98s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()                                      {MaxProc5}	<0.12s>	<0.47s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (5)                                     {MaxProc5}	<0.06s>	<0.16s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()                                      {MaxProc5}	<0.08s>	<0.24s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<65.89s>	<232.45s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<14.94s>	<132.17s>	<0KB>
+eke         sAk   correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<9.65s>	<40.71s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()                                      {MaxProc5}	<0.12s>	<0.51s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.03s>	<0.09s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()                                      {MaxProc5}	<0.02s>	<0.09s>	<0KB>
+eke         aB    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<1.05s>	<5.27s>	<0KB>
+eke         aB    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<4.79s>	<44.46s>	<0KB>
+eke         aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<0.34s>	<4.22s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()                                      {MaxProc5}	<1.53s>	<5.55s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.02s>	<0.10s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()                                      {MaxProc5}	<0.04s>	<0.14s>	<0KB>
+eke         aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<1.12s>	<5.28s>	<0KB>
+eke         aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<5.78s>	<48.59s>	<0KB>
+eke         aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc5}	<0.38s>	<4.09s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()                                      {MaxProc5}	<1.16s>	<3.92s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.03s>	<0.10s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()                                      {MaxProc5}	<0.02s>	<0.11s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<69.46s>	<243.83s>	<0KB>
+avispa_tls  sBsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1199.78s>	<1222.16s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<10.33s>	<43.04s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()                                      {MaxProc5}	<0.02s>	<0.14s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.03s>	<0.13s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()                                      {MaxProc5}	<0.03s>	<0.15s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<69.71s>	<241.76s>	<0KB>
+avispa_tls  sBck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1199.78s>	<1221.92s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<9.32s>	<39.81s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()                                      {MaxProc5}	<0.02s>	<0.11s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.04s>	<0.13s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()                                      {MaxProc5}	<0.04s>	<0.14s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<69.64s>	<239.96s>	<0KB>
+avispa_tls  sAsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1199.78s>	<1220.55s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<4.04s>	<21.64s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()                                      {MaxProc5}	<0.01s>	<0.10s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.03s>	<0.14s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()                                      {MaxProc5}	<0.03s>	<0.12s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<69.23s>	<240.95s>	<0KB>
+avispa_tls  sAck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1199.78s>	<1222.22s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<3.77s>	<20.58s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()                                      {MaxProc5}	<0.02s>	<0.15s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.01s>	<0.07s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()                                      {MaxProc5}	<0.01s>	<0.07s>	<0KB>
+avispa_tls  aB    timeout!  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1200.00s>	<4212.17s>	<0KB>
+avispa_tls  aB    timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1199.78s>	<1699.93s>	<0KB>
+avispa_tls  aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<234.17s>	<1104.84s>	<0KB>
+*** Claim: avispa_tls,aA ***
+avispa_tls  aA    attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.02s>	<0KB>
+avispa_tls  aA    attack_!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.01s>	<0KB>
+avispa_tls  aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc5}	<0.27s>	<1.24s>	<0KB>
+avispa_tls  aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc5}	<6.06s>	<23.58s>	<0KB>
+avispa_tls  aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,E)])  {MaxProc5}	<0.13s>	<0.76s>	<0KB>
+*** Claim: fix_nspk,sBnb ***
+fix_nspk    sBnb  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBnb  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<19.96s>	<72.82s>	<0KB>
+fix_nspk    sBnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<17.75s>	<147.78s>	<0KB>
+fix_nspk    sBnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<0.90s>	<12.78s>	<0KB>
+fix_nspk    sBnb  correct!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.06s>	<0KB>
+*** Claim: fix_nspk,sBna ***
+fix_nspk    sBna  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBna  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sBna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<18.28s>	<66.59s>	<0KB>
+fix_nspk    sBna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<19.01s>	<154.67s>	<0KB>
+fix_nspk    sBna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<2.74s>	<18.24s>	<0KB>
+fix_nspk    sBna  correct!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,sAnb ***
+fix_nspk    sAnb  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.04s>	<0KB>
+fix_nspk    sAnb  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<17.59s>	<64.43s>	<0KB>
+fix_nspk    sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<22.65s>	<178.74s>	<0KB>
+fix_nspk    sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1.13s>	<12.98s>	<0KB>
+fix_nspk    sAnb  correct!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,sAna ***
+fix_nspk    sAna  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAna  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<17.12s>	<61.42s>	<0KB>
+fix_nspk    sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<21.09s>	<175.68s>	<0KB>
+fix_nspk    sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<0.93s>	<13.82s>	<0KB>
+fix_nspk    sAna  correct!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.02s>	<0KB>
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.02s>	<0KB>
+fix_nspk    aB    correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+fix_nspk    aB    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<352.60s>	<1412.96s>	<0KB>
+fix_nspk    aB    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<641.79s>	<5525.57s>	<0KB>
+fix_nspk    aB    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<94.00s>	<630.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.07s>	<0KB>
+fix_nspk    aA    correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.09s>	<0KB>
+fix_nspk    aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<440.21s>	<1671.14s>	<0KB>
+fix_nspk    aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1054.86s>	<6838.31s>	<0KB>
+fix_nspk    aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<59.92s>	<516.70s>	<0KB>
+*** Claim: nspk,sBnb ***
+nspk        sBnb  attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0.01s>	<0.04s>	<0KB>
+nspk        sBnb  attack_!  scyther   Traces   ()                                      {MaxProc5}	<0.01s>	<0.04s>	<0KB>
+nspk        sBnb  attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<0.59s>	<2.24s>	<0KB>
+nspk        sBnb  attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<2.70s>	<16.58s>	<0KB>
+nspk        sBnb  attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<0.15s>	<1.53s>	<0KB>
+nspk        sBnb  attack_!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.05s>	<0KB>
+*** Claim: nspk,sBna ***
+nspk        sBna  attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.03s>	<0KB>
+nspk        sBna  attack_!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.04s>	<0KB>
+nspk        sBna  attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<0.55s>	<2.19s>	<0KB>
+nspk        sBna  attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<2.75s>	<16.97s>	<0KB>
+nspk        sBna  attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<0.12s>	<1.41s>	<0KB>
+nspk        sBna  attack_!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.04s>	<0KB>
+*** Claim: nspk,sAnb ***
+nspk        sAnb  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.07s>	<0KB>
+nspk        sAnb  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.05s>	<0KB>
+nspk        sAnb  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<30.74s>	<105.94s>	<0KB>
+nspk        sAnb  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<48.94s>	<263.15s>	<0KB>
+nspk        sAnb  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1.82s>	<14.11s>	<0KB>
+nspk        sAnb  attack_!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.02s>	<0KB>
+*** Claim: nspk,sAna ***
+nspk        sAna  correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.07s>	<0KB>
+nspk        sAna  correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.04s>	<0KB>
+nspk        sAna  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<30.68s>	<106.53s>	<0KB>
+nspk        sAna  correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<46.91s>	<256.51s>	<0KB>
+nspk        sAna  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1.67s>	<13.68s>	<0KB>
+nspk        sAna  correct!  proverif  Traces   ()                                      {MaxProc5}	<0s>	<0.10s>	<0KB>
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.03s>	<0KB>
+nspk        aB    attack_!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.06s>	<0KB>
+nspk        aB    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<2.31s>	<9.65s>	<0KB>
+nspk        aB    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<11.08s>	<76.22s>	<0KB>
+nspk        aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,E),R(A,A)])  {MaxProc5}	<0.86s>	<6.96s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    correct!  scyther   MaxProc  (5)                                     {MaxProc5}	<0s>	<0.01s>	<0KB>
+nspk        aA    correct!  scyther   Traces   ()                                      {MaxProc5}	<0s>	<0.03s>	<0KB>
+nspk        aA    correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<588.28s>	<2150.37s>	<0KB>
+nspk        aA    correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1027.54s>	<6877.92s>	<0KB>
+nspk        aA    correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<46.91s>	<496.26s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(6) from range (1,10,1)
+* Using timeout of 1200 seconds
+* Current time and date: Fri Jun 27 19:34:46 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   correct?  scyther   MaxProc  (6)                                     {MaxProc6}	<2.69s>	<9.25s>	<0KB>
+eke         sBk   correct?  scyther   Traces   ()                                      {MaxProc6}	<4.29s>	<14.77s>	<0KB>
+eke         sBk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<837.26s>	<2831.21s>	<0KB>
+eke         sBk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<26.56s>	<212.00s>	<0KB>
+eke         sBk   timeout!  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1200.00s>	<1993.73s>	<0KB>
+eke         sBk   correct!  proverif  Traces   ()                                             {MaxProc6}	<0.17s>	<0.77s>	<0KB>
+*** Claim: eke,sAk ***
+eke         sAk   correct?  scyther   MaxProc  (6)                                            {MaxProc6}	<0.11s>	<0.39s>	<0KB>
+eke         sAk   correct?  scyther   Traces   ()                                             {MaxProc6}	<0.10s>	<0.44s>	<0KB>
+eke         sAk   correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<964.98s>	<3291.49s>	<0KB>
+eke         sAk   correct?  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<26.17s>	<211.29s>	<0KB>
+eke         sAk   timeout!  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1200.00s>	<1994.32s>	<0KB>
+eke         sAk   correct!  proverif  Traces   ()                                             {MaxProc6}	<0.15s>	<0.73s>	<0KB>
+*** Claim: eke,aB ***
+eke         aB    attack_!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.04s>	<0.09s>	<0KB>
+eke         aB    attack_!  scyther   Traces   ()                                             {MaxProc6}	<0.04s>	<0.12s>	<0KB>
+eke         aB    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<2.43s>	<10.19s>	<0KB>
+eke         aB    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<10.48s>	<61.58s>	<0KB>
+eke         aB    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<0.49s>	<4.33s>	<0KB>
+eke         aB    attack_!  proverif  Traces   ()                                             {MaxProc6}	<1.86s>	<6.28s>	<0KB>
+*** Claim: eke,aA ***
+eke         aA    attack_!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.04s>	<0.12s>	<0KB>
+eke         aA    attack_!  scyther   Traces   ()                                             {MaxProc6}	<0.05s>	<0.15s>	<0KB>
+eke         aA    attack_!  ofmc      Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<2.32s>	<9.49s>	<0KB>
+eke         aA    attack_!  satmc     Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<6.05s>	<48.43s>	<0KB>
+eke         aA    attack_!  cl-atse   Scen     ([I(A,A),I(A,A),I(A,A),I(A,A),I(A,B),R(B,A)])  {MaxProc6}	<0.47s>	<4.41s>	<0KB>
+eke         aA    attack_!  proverif  Traces   ()                                             {MaxProc6}	<1.67s>	<5.83s>	<0KB>
+*** Claim: avispa_tls,sBsk ***
+avispa_tls  sBsk  correct!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.03s>	<0.04s>	<0KB>
+avispa_tls  sBsk  correct!  scyther   Traces   ()                                             {MaxProc6}	<0.02s>	<0.14s>	<0KB>
+avispa_tls  sBsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<653.50s>	<2228.63s>	<0KB>
+avispa_tls  sBsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1199.78s>	<1233.49s>	<0KB>
+avispa_tls  sBsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<218.21s>	<753.64s>	<0KB>
+avispa_tls  sBsk  correct!  proverif  Traces   ()                                             {MaxProc6}	<0.02s>	<0.10s>	<0KB>
+*** Claim: avispa_tls,sBck ***
+avispa_tls  sBck  correct!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.03s>	<0.11s>	<0KB>
+avispa_tls  sBck  correct!  scyther   Traces   ()                                             {MaxProc6}	<0.03s>	<0.11s>	<0KB>
+avispa_tls  sBck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<651.28s>	<2212.24s>	<0KB>
+avispa_tls  sBck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1199.78s>	<1233.36s>	<0KB>
+avispa_tls  sBck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<217.73s>	<749.87s>	<0KB>
+avispa_tls  sBck  correct!  proverif  Traces   ()                                             {MaxProc6}	<0.02s>	<0.14s>	<0KB>
+*** Claim: avispa_tls,sAsk ***
+avispa_tls  sAsk  correct!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.05s>	<0.13s>	<0KB>
+avispa_tls  sAsk  correct!  scyther   Traces   ()                                             {MaxProc6}	<0.04s>	<0.11s>	<0KB>
+avispa_tls  sAsk  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<657.28s>	<2234.06s>	<0KB>
+avispa_tls  sAsk  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1199.78s>	<1232.56s>	<0KB>
+avispa_tls  sAsk  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<27.39s>	<102.85s>	<0KB>
+avispa_tls  sAsk  correct!  proverif  Traces   ()                                             {MaxProc6}	<0.02s>	<0.12s>	<0KB>
+*** Claim: avispa_tls,sAck ***
+avispa_tls  sAck  correct!  scyther   MaxProc  (6)                                            {MaxProc6}	<0.05s>	<0.15s>	<0KB>
+avispa_tls  sAck  correct!  scyther   Traces   ()                                             {MaxProc6}	<0.05s>	<0.25s>	<0KB>
+avispa_tls  sAck  correct?  ofmc      Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<656.35s>	<2233.00s>	<0KB>
+avispa_tls  sAck  timeout!  satmc     Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1199.78s>	<1233.43s>	<0KB>
+avispa_tls  sAck  correct?  cl-atse   Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<27.07s>	<103.17s>	<0KB>
+avispa_tls  sAck  correct!  proverif  Traces   ()                                             {MaxProc6}	<0.01s>	<0.07s>	<0KB>
+*** Claim: avispa_tls,aB ***
+avispa_tls  aB    correct!  scyther   MaxProc  (6)                                            {MaxProc6}	<0s>	<0.04s>	<0KB>
+avispa_tls  aB    correct!  scyther   Traces   ()                                             {MaxProc6}	<0.01s>	<0.03s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(1) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:42:13 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A)])                       {MaxProc1}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A)])                       {MaxProc1}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A)])                       {MaxProc1}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+eke         aA    timeout!  casperfdr  Scen     ([R(E,A)])                       {MaxProc1}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(2) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Mon Sep  1 03:10:55 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A)])                {MaxProc2}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A)])                {MaxProc2}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A),R(E,B)])                {MaxProc2}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+eke         aA    timeout!  casperfdr  Scen     ([R(E,A),R(E,B)])                {MaxProc2}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(3) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Mon Sep  1 08:41:02 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A)])         {MaxProc3}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A)])         {MaxProc3}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,B)])         {MaxProc3}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+eke         aA    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,B)])         {MaxProc3}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(4) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Mon Sep  1 14:14:38 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+eke         aA    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc4}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(5) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Mon Sep  1 19:51:33 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc5}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+eke         aA    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B)])  {MaxProc5}	<1200.00s>	<1200.00s>	<?KB>
+************************************************************
+* Testing performance for MaxProc(6) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Tue Sep  2 01:42:12 2008
+************************************************************
+*** Claim: eke,sBk ***
+eke         sBk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,sAk ***
+eke         sAk   timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,A),R(E,A),R(E,A)])  {MaxProc6}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aB ***
+eke         aB    timeout!  casperfdr  Scen     ([R(E,A),R(E,A),R(E,A),R(E,B),R(E,B),R(E,B)])  {MaxProc6}	<1200.00s>	<1200.00s>	<?KB>
+*** Claim: eke,aA ***
+************************************************************
+* Testing performance for MaxProc(1) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:35:51 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc1}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc1}	<0s>	<0s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc1}	<0.02s>	<0.02s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc1}	<0.02s>	<0.02s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(2) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:35:57 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc2}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc2}	<0s>	<0.01s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc2}	<0.02s>	<0.02s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc2}	<0.01s>	<0.01s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(3) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:36:02 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc3}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc3}	<0s>	<0.01s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc3}	<0.01s>	<0.01s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc3}	<0.01s>	<0.01s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(4) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:36:08 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc4}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc4}	<0s>	<0.01s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc4}	<0.02s>	<0.02s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc4}	<0.01s>	<0.01s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(5) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:36:13 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc5}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc5}	<0s>	<0.01s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc5}	<0.01s>	<0.01s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc5}	<0.01s>	<0.01s>	<0KB>
+************************************************************
+* Testing performance for MaxProc(6) from range (1,7,1)
+* Using timeout of 1200 seconds
+* Current time and date: Sun Aug 31 21:36:18 2008
+************************************************************
+*** Claim: eke,sBk ***
+*** Claim: eke,sAk ***
+*** Claim: eke,aB ***
+*** Claim: eke,aA ***
+*** Claim: avispa_tls,sBsk ***
+*** Claim: avispa_tls,sBck ***
+*** Claim: avispa_tls,sAsk ***
+*** Claim: avispa_tls,sAck ***
+*** Claim: avispa_tls,aB ***
+*** Claim: avispa_tls,aA ***
+*** Claim: fix_nspk,sBnb ***
+*** Claim: fix_nspk,sBna ***
+*** Claim: fix_nspk,sAnb ***
+*** Claim: fix_nspk,sAna ***
+*** Claim: fix_nspk,aB ***
+fix_nspk    aB    correct!  proverif  Traces  ()  {MaxProc6}	<0s>	<0.01s>	<0KB>
+*** Claim: fix_nspk,aA ***
+fix_nspk    aA    correct!  proverif  Traces  ()  {MaxProc6}	<0s>	<0.01s>	<0KB>
+*** Claim: nspk,sBnb ***
+*** Claim: nspk,sBna ***
+*** Claim: nspk,sAnb ***
+*** Claim: nspk,sAna ***
+*** Claim: nspk,aB ***
+nspk        aB    attack_!  proverif  Traces  ()  {MaxProc6}	<0.02s>	<0.02s>	<0KB>
+*** Claim: nspk,aA ***
+nspk        aA    attack_!  proverif  Traces  ()  {MaxProc6}	<0s>	<0s>	<0KB>
+eke         sAk   correct!  ta4sp    RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<11.16s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<11.20s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.18s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.21s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.23s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.29s>
+fix_nspk    sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<1.70s>
+fix_nspk    sAnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<1.85s>
+fix_nspk    sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.48s>
+fix_nspk    sBnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<1.71s>
+nspk        sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<1.92s>
+nspk        sAnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<1.44s>
+nspk        sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.47s>
+nspk        sBnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc1}	<0.47s>
+eke         sAk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<11.08s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<11.14s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.38s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.19s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.30s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.27s>
+fix_nspk    sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<1.70s>
+fix_nspk    sAnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<1.72s>
+fix_nspk    sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.48s>
+fix_nspk    sBnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<1.70s>
+nspk        sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<1.91s>
+nspk        sAnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<1.45s>
+nspk        sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.47s>
+nspk        sBnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc2}	<0.47s>
+eke         sAk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<11.21s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<11.12s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.31s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.24s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.30s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.23s>
+fix_nspk    sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<1.70s>
+fix_nspk    sAnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<1.72s>
+fix_nspk    sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.48s>
+fix_nspk    sBnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<1.71s>
+nspk        sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<1.91s>
+nspk        sAnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<1.45s>
+nspk        sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.46s>
+nspk        sBnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc3}	<0.47s>
+eke         sAk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<11.41s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<10.86s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.19s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.30s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.19s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.11s>
+fix_nspk    sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<1.69s>
+fix_nspk    sAnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<1.71s>
+fix_nspk    sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.48s>
+fix_nspk    sBnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<1.71s>
+nspk        sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<1.90s>
+nspk        sAnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<1.46s>
+nspk        sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.47s>
+nspk        sBnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])  {MaxProc4}	<0.47s>
+eke         sAk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<10.96s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<10.92s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.24s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.24s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.23s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.19s>
+fix_nspk    sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<1.70s>
+fix_nspk    sAnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<1.72s>
+fix_nspk    sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.47s>
+fix_nspk    sBnb  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<1.71s>
+nspk        sAna  correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<1.91s>
+nspk        sAnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<1.46s>
+nspk        sBna  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.47s>
+nspk        sBnb  attack_?  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])         {MaxProc5}	<0.47s>
+eke         sAk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<11.23s>
+eke         sBk   correct!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<11.10s>
+avispa_tls  sAck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<0.26s>
+avispa_tls  sAsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<0.25s>
+avispa_tls  sBck  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<0.35s>
+avispa_tls  sBsk  timeout!  ta4sp     RepScen  ([I(A,A),I(A,E),R(A,A),R(E,A)])                {MaxProc6}	<0.25s>

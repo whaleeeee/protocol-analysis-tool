@@ -1,0 +1,75 @@
+#!/bin/bash
+# Increase stack limit
+ulimit -s 20480
+ulimit -a
+
+if [ `dirname $0` = "." ]
+then
+  THIS=$PWD 
+else
+  THIS=`dirname $0`
+fi
+
+#
+# Configure IOPBINDIR
+#
+IOPBINDIR=$THIS/Libraries/IOP-v867
+export IOPBINDIR
+echo IOPBINDIR=$IOPBINDIR
+#
+# Configure JLAMBDA_CLASSES
+#
+JLAMBDA_CLASSES=$THIS/Libraries/BrowserLauncher2-10.jar:`dirname $0`/Libraries/pla.jar:.:
+export JLAMBDA_CLASSES
+echo JLAMBDA_CLASSES=$JLAMBDA_CLASSES
+#
+# Configure BLDIR
+#
+BLDIR=$THIS/Libraries/BrowserLauncher2-10.jar
+export BLDIR
+echo BLDIR=$BLDIR
+#
+# Configure MNPA_LIB
+#
+MNPA_LIB=$THIS/Libraries 
+export MNPA_LIB
+echo MNPA_LIB=$MNPA_LIB
+#
+# Configure MNPA_GUI
+#
+MNPA_GUI=$THIS/NPAAssist
+export MNPA_GUI
+echo MNPA_GUI=$MNPA_GUI
+#
+# Configure MAUDE
+#
+MAUDE=$THIS/maude
+export MAUDE
+echo MAUDE=$MAUDE
+#
+# Configure MAUDE_LIB
+#
+MAUDE_LIB=$JLAMBDA_CLASSES
+export MAUDE_LIB
+echo MAUDE_LIB=$MAUDE_LIB
+#
+# Configure MAUDE_NPA
+#
+MAUDE_NPA=$THIS/Maude-NPA/maude-npa
+export MAUDE_NPA
+echo MAUDE_NPA=$MAUDE_NPA
+#
+# Configure PATH
+#
+PATH=$MAUDE:$MAUDE_LIB:$MAUDE_NPA:$MNPA_GUI:$BLDIR:$IOPBINDIR:$JLAMBDA_CLASSES:$PATH
+export PATH
+echo PATH=$PATH
+
+cd $THIS
+
+#
+# Start jlambda
+#
+jlambda launcher.lsp
+
+

@@ -1,0 +1,105 @@
+(* Delaune, Kremer, & Ryan (2009) variant of the Lee et al. election
+   scheme. 
+   Proof of ballot secrecy, using the process simplification
+   by Cheval & Blanchet (POST'13) instead of the swapping.
+   The computation of the simplified processes is very slow.
+   It succeeds in proving the equivalence.
+
+   See file Lee.DKR.ballotsecrecy.pv for a comparison with the
+   code given by Delaune, Kremer, & Ryan in their paper.
+*)
+
+
+free ch, ch2: channel.
+free a,b: bitstring.
+
+type pkey.
+type skey.
+type seed.
+type dvp_t.
+type check_t.
+
+(* Signature *)
+fun penc(bitstring, pkey, seed): bitstring. (* probabilistic encryption *)
+fun rencrypt(bitstring, seed): bitstring. (* re-encryption *)
+fun f(seed, seed): seed. (* function combining random coins*)
+fun sign(bitstring, skey): bitstring. (* digital signature *)
+fun dvp(bitstring, bitstring, seed, pkey): dvp_t. (* designated verifier proof *)
+fun fake_dvp(bitstring, bitstring, seed, skey): dvp_t.
+
+const ok: check_t. (* check dvp ok *)
+fun pk(skey):pkey. (* get public key from private key *)
+
+(* Equational theory *)
+reduc forall m: bitstring, sk: skey, r: seed;
+      decrypt(penc(m,pk(sk),r),sk)=m.
+equation forall m: bitstring, sk: skey, r1: seed, r2: seed; 
+	 rencrypt(penc(m,pk(sk),r1),r2) = penc(m,pk(sk),f(r1,r2)). 
+reduc forall m: bitstring, sk: skey;
+      checksign(sign(m,sk),pk(sk))= m.
+reduc forall x: bitstring, r: seed, pkv: pkey; 
+      checkdvp(dvp(x,rencrypt(x,r),r,pkv), x,rencrypt(x,r),pkv)=ok;
+      forall x: bitstring, y: bitstring, z: seed, skv: skey;
+      checkdvp(fake_dvp(x,y,z,skv),x,y,pk(skv))=ok.
+
+
+(* Voter with secret key skv, vote v, talking to the adminstrator on private channel chA *)
+let processV(chA: channel, pkc: pkey, pka: pkey, skv: skey, v: bitstring) =
+    new r: seed;
+    let e = penc(v,pkc,r) in
+    out(chA,(pk(skv),e,sign(e,skv)));
+    in(chA,(re: bitstring,sa: bitstring,dvpV: dvp_t));
+    if checkdvp(dvpV,e,re,pk(skv)) = ok then
+    if checksign(sa,pka) = re then
+    out(ch,sa).
+
+
+(* Administrator talking to voter with public key pubkv, on private channel chA *)
+let processA(chA: channel, ska: skey, pubkv: pkey) =
+    (* register a legimitate voter *)
+    in(chA,(=pubkv,enc: bitstring,sig: bitstring));
+    if checksign(sig,pubkv)= enc then
+    new r1: seed;
+    let reAd=rencrypt(enc,r1) in
+    let signAd=sign(reAd,ska) in	
+    let dvpAd=dvp(enc,reAd,r1,pubkv) in
+    out(chA,(reAd,signAd,dvpAd)).
+
+(* The signature/decryption keys need not be secret to prove vote privacy *)
+free ska, skc, skva, skvb: skey.
+
+equivalence
+
+    (* corresponding public keys *)
+    let pka = pk(ska) in
+    let pkc = pk(skc) in
+    let pkva = pk(skva) in
+    let pkvb = pk(skvb) in
+    (* public keys disclosure *)
+    out(ch,pka); out(ch,pkc); out(ch,pkva); out(ch,pkvb);
+	(* private channels *)
+	new chA1: channel; new chA2: channel;
+	(* collector and dishonest voters included in the adversary,
+	   which has the keys *) 
+	(* voters & administrator *)
+	(processA(chA1, ska, pkva) | 
+	 processV(chA1, pkc, pka, skva, a) |
+	 processA(chA2, ska, pkvb) | 
+	 processV(chA2, pkc, pka, skvb, b))
+
+    (* corresponding public keys *)
+    let pka = pk(ska) in
+    let pkc = pk(skc) in
+    let pkva = pk(skva) in
+    let pkvb = pk(skvb) in
+    (* public keys disclosure *)
+    out(ch,pka); out(ch,pkc); out(ch,pkva); out(ch,pkvb);
+	(* private channels *)
+	new chA1: channel; new chA2: channel;
+	(* collector and dishonest voters included in the adversary,
+	   which has the keys *) 
+	(* voters & administrator *)
+	(processA(chA1, ska, pkva) | 
+	 processV(chA1, pkc, pka, skva, b) |
+	 processA(chA2, ska, pkvb) | 
+	 processV(chA2, pkc, pka, skvb, a))
